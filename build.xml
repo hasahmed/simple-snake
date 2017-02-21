@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <project name="Snake" default="compile" basedir="./">
     <property name="src" location="./"/>
-    <property name="bin" location="./"/>
+    <property name="dest" location="./"/>
     <property name="Snake" location="bin"/>
     
      <target name="compile" description="compile the source">
         <!-- Compile the java code from ${src} into ${build} -->
-        <javac srcdir="${src}" destdir="${bin}"  includeantruntime="false"/>
+        <javac srcdir="${src}" destdir="${dest}"  includeantruntime="false"/>
     </target>
     <target name="jar" depends="compile" description="package as jar">
-        <jar jarfile="snake.jar" destfile="snake.jar" basedir="./">
+        <jar jarfile="snake.jar" destfile="/usr/local/Cellar/snake/1.0.0/snake.jar" basedir="./">
             <zipgroupfileset dir="./">
                 <include name="*.jar"/>
             </zipgroupfileset>
