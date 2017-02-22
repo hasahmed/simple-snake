@@ -179,9 +179,6 @@ public class Snake implements World{
     }
     
     public static void main(String[] args) throws IOException {
-        WriteScore.init();
-        System.setProperty("sun.java2d.opengl", "True");
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
       try {
         if(args.length > 0){
             if(args[0].compareTo("--version") == 0){
@@ -196,6 +193,9 @@ public class Snake implements World{
       catch(ArrayIndexOutOfBoundsException e){
         //do nothing
       }
+        WriteScore.init();
+        System.setProperty("sun.java2d.opengl", "True");
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
       
       //BigBang 
       Snake s = new Snake();
