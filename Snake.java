@@ -5,9 +5,9 @@ import javax.imageio.ImageIO;
 import java.io.*;
 import java.awt.image.*;
 
-//ERROR!!!!! when hitting the very last piece of body, game is not lost.
 
 public class Snake implements World{
+  static String version = "1.0.0";
   boolean displayStartScreen = true;
   int printNum = 0;
   static int PLAY_AREA_X = 400;
@@ -183,7 +183,15 @@ public class Snake implements World{
         System.setProperty("sun.java2d.opengl", "True");
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
       try {
-        resetSpeed = Integer.parseInt(args[0]);
+        if(args.length > 0){
+            if(args[0].compareTo("--version") == 0){
+                System.out.println(version);
+                return;
+            }
+            else{
+                resetSpeed = Integer.parseInt(args[0]);
+            }
+        }
       }
       catch(ArrayIndexOutOfBoundsException e){
         //do nothing

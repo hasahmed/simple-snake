@@ -1,3 +1,3 @@
 #!/bin/bash
-#java -jar Users/hasankatie/games/snakeWorking/bin/snake.jar 
-java -jar snake.jar 
+
+java -jar /usr/local/Cellar/snake/1.0.0/snake.jar 
