@@ -1,2 +1,0 @@
-#!/bin/bash
-tar -cvzf snake.tar.gz *.java snake build.xml

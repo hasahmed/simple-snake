@@ -1,2 +1,0 @@
-#!/bin/bash
-scp snake.tar.gz hasahmed@silo.cs.indiana.edu:~/a348-workspace/apache/htdocs/snake/

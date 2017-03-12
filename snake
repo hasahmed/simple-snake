@@ -1,2 +1,0 @@
-#!/bin/bash
-java -jar /usr/local/Cellar/snake/1.0.0/snake.jar 
