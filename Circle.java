@@ -259,10 +259,26 @@ class Globals{
 
   public static void setDir(Dir d){
     keyOpp++;
-    if (d == Dir.UP) speed.setLocation(0, -10);
-    else if (d == Dir.DOWN) speed.setLocation(0, 10);
-    else if (d == Dir.LEFT) speed.setLocation(-10, 0);
-    else if (d == Dir.RIGHT) speed.setLocation(10, 0);
+    if (d == Dir.UP){
+        if(Globals.getDir() != Dir.DOWN)
+            speed.setLocation(0, -10);
+    }
+
+    else if (d == Dir.DOWN){
+        if(Globals.getDir() != Dir.UP)
+            speed.setLocation(0, 10);
+    }
+
+    else if (d == Dir.LEFT) {
+        if(Globals.getDir() != Dir.RIGHT)
+            speed.setLocation(-10, 0);
+    }
+
+    else if (d == Dir.RIGHT) {
+        if(Globals.getDir() != Dir.LEFT)
+            speed.setLocation(10, 0);
+    }
+
     else if (d == Dir.STOP) speed.setLocation(0, 0);
   }
   public static Dir getDir(){

@@ -107,14 +107,20 @@ public class Snake implements World{
 
   public void keyPressed(KeyEvent e) {
     if (!gameOver && Globals.keyOpp < 2){
-        
+
       if (e.getKeyCode() == KeyEvent.VK_RIGHT){
           Globals.add(Globals.Dir.RIGHT);
-          if(Globals.getDir() == Globals.Dir.LEFT && Globals.dirls[0] == Globals.Dir.RIGHT) Globals.chopHead();
+          if(Globals.getDir() == Globals.Dir.LEFT) 
+            if(Globals.dirls[0] == Globals.Dir.RIGHT){
+                Globals.chopHead();
+            }
       }
       else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             Globals.add(Globals.Dir.LEFT);
-            if(Globals.getDir() == Globals.Dir.RIGHT && Globals.dirls[0] == Globals.Dir.LEFT) Globals.chopHead();
+            if(Globals.getDir() == Globals.Dir.RIGHT)
+                if(Globals.dirls[0] == Globals.Dir.LEFT){
+                    Globals.chopHead();
+                }
       }
       
       else if (e.getKeyCode() == KeyEvent.VK_UP){
@@ -141,7 +147,7 @@ public class Snake implements World{
           }
       }
       else if (e.getKeyCode() == KeyEvent.VK_Q){
-        this.body.addCircle();
+        //this.body.addCircle();
       }
       else if (e.getKeyCode() == KeyEvent.VK_D){
         //drawMode = true;
