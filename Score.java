@@ -20,7 +20,8 @@ class Score{
   
   void draw(Graphics g){
     g.setColor(textColor);
-    g.setFont(new Font("TimesRoman", Font.PLAIN, 10));
+//    g.setFont(new Font("TimesRoman", Font.PLAIN, 10));
+    g.setFont(new Font("AndaleMono", Font.PLAIN, 10));
     g.drawString(this.scoreText, this.pos.x, this.pos.y);
   }
   void addTo(){

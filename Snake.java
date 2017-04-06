@@ -23,7 +23,7 @@ public class Snake implements World{
   int FOOD_GROWTH = 3;
   static Integer resetSpeed = 75;
   int INCVAL = RADIUS * 2;
-  static int HEIGHT = 410;
+  static int HEIGHT = 432;
   static int WIDTH = 410;
   Color BODY_COLOR = Color.BLACK;
   Color FOOD_COLOR = Color.ORANGE;
@@ -89,7 +89,7 @@ public class Snake implements World{
     Frills.drawBorder(g);
     body.draw(g);
     if (gameOver){
-        if (score.getScore() >scoreWrittenToFile){
+        if (score.getScore() > scoreWrittenToFile){
             int oldScore = scoreWrittenToFile;
             WriteScore.drawNewHighScoreMessage(g, oldScore, body.size());
         }
@@ -212,7 +212,7 @@ public class Snake implements World{
       frame.setFocusable(true);
       frame.addKeyListener(game);
       game.addMouseListener(game);
-      frame.setUndecorated(true);
+//      frame.setUndecorated(true);
       frame.setVisible(true); 
       frame.setSize(WIDTH, HEIGHT);
       frame.setLocation(dim.width/2 - frame.getSize().width /2, dim.height/2 - frame.getSize().height/2);
