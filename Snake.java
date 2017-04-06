@@ -147,10 +147,9 @@ public class Snake implements World{
           }
       }
       else if (e.getKeyCode() == KeyEvent.VK_Q){
-        //this.body.addCircle();
+          frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
       }
       else if (e.getKeyCode() == KeyEvent.VK_D){
-        //drawMode = true;
       }
       else if (e.getKeyCode() == KeyEvent.VK_ESCAPE){
           frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
@@ -224,7 +223,7 @@ public class Snake implements World{
           s.init();
       }
       
-      game.start();
+      game.begin();
     }
   
 }

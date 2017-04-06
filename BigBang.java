@@ -2,15 +2,33 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-class BigBang extends JComponent implements KeyListener, ActionListener, MouseListener {
+class BigBang extends JComponent implements KeyListener, ActionListener, MouseListener, Runnable {
   Timer timer;
+  Thread thread;
   World world;
+
   BigBang(int delay, World world) {
     timer = new Timer(delay, this); 
     this.world = world;
   } 
-  public void start() {
+  public void run(){
+      while(true){
+        this.repaint();
+        try{
+            thread.sleep(10);
+        }
+        catch(InterruptedException e){
+            System.out.println("Something happened with the thread");
+        }
+      }
+  }
+  public void start(){
+      thread = new Thread(this, "Snake : Repaint");
+      thread.start();
+  }
+  public void begin() {
     timer.start();  
+    start();
   }
   BigBang(World world) {
     this(1000, world);
@@ -21,11 +39,11 @@ class BigBang extends JComponent implements KeyListener, ActionListener, MouseLi
   public void actionPerformed(ActionEvent e) {
     world.update(); 
     if (world.hasEnded()) timer.stop(); 
-    this.repaint(); 
+  //  this.repaint(); 
   }
   public void keyPressed(KeyEvent e) {
     world.keyPressed(e); 
-    this.repaint(); 
+    //this.repaint(); 
   } 
   public void keyTyped(KeyEvent e) { } 
   public void keyReleased(KeyEvent e) { } 
