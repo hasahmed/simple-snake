@@ -23,7 +23,6 @@ class BigBang extends JComponent implements KeyListener, ActionListener, MouseLi
       }
   }
   public void start(){
-      System.out.println("hey");
       thread = new Thread(this, "Snake : Repaint");
       thread.start();
   }
