@@ -7,7 +7,7 @@ import java.awt.image.*;
 
 
 public class Snake implements World{
-  static String version = "1.0.0";
+  static String version = "1.0.3";
   boolean displayStartScreen = true;
   int printNum = 0;
   static int PLAY_AREA_X = 400;
