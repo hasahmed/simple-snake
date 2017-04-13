@@ -160,7 +160,9 @@ public class Snake implements World{
         reset();
     }
     
-    else if (e.getKeyCode() == KeyEvent.VK_ESCAPE){
+    else if (e.getKeyCode() == KeyEvent.VK_ESCAPE ||
+            e.getKeyCode() == KeyEvent.VK_Q
+            ){
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }
     if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_LEFT
