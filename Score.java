@@ -54,7 +54,7 @@ class WriteScore{
             if (!scoreFile.exists()){
                 scoreFile.createNewFile();
                 PrintWriter println = new PrintWriter(scoreFile);
-                println.print('0');
+                println.print(textEncryptor.encrypt("0"));
                 println.close();
             }
         }
@@ -86,7 +86,6 @@ class WriteScore{
                 printLn.printf("%s\n", textEncryptor.encrypt(currentScore));
                 printLn.close();
                 if (Integer.parseInt(score) > Integer.parseInt(currentScore)){
-                    PrintWriter printLn = new PrintWriter(scoreFile);
                     printLn.printf("%s\n", textEncryptor.encrypt(score));
                     printLn.close();
                     newHighScore = true;
