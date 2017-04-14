@@ -2,6 +2,7 @@ import java.awt.*;
 import java.io.*;
 import javax.swing.*;
 import java.util.Scanner;
+import org.jasypt.util.text.*;
 
 class Score{
   Color textColor = Color.WHITE;
@@ -39,7 +40,16 @@ class WriteScore{
     private static File scoreFile = new File(saveLoc);
     static boolean newHighScore = false;
 
+
+
+
+    //text encryptor
+    private static String encryptionPassword = "wha55up";
+    private static BasicTextEncryptor textEncryptor = new BasicTextEncryptor();
+
+
     static void init(){
+        textEncryptor.setPassword(encryptionPassword);
         try{
             if (!scoreFile.exists()){
                 scoreFile.createNewFile();
@@ -56,10 +66,12 @@ class WriteScore{
     static void writeToFile(String score){
         try{
             Scanner scannie = new Scanner(scoreFile);
-            String currentScore = scannie.next();
+            String currentScore = textEncryptor.decrypt(scannie.next());
                 if (Integer.parseInt(score) > Integer.parseInt(currentScore)){
+
+                    ///////text encryptor
                     PrintWriter printLn = new PrintWriter(scoreFile);
-                    printLn.printf("%s" + "%n", score);
+                    printLn.printf("%s" + "%n", textEncryptor.encrypt(score));
                     printLn.close();
                     scannie.close();
                     newHighScore = true;
@@ -70,9 +82,12 @@ class WriteScore{
             try{
                 scoreFile.createNewFile();
                 String currentScore = "0";
+                PrintWriter printLn = new PrintWriter(scoreFile);
+                printLn.printf("%s\n", textEncryptor.encrypt(currentScore));
+                printLn.close();
                 if (Integer.parseInt(score) > Integer.parseInt(currentScore)){
                     PrintWriter printLn = new PrintWriter(scoreFile);
-                    printLn.printf("%s" + "%n", score);
+                    printLn.printf("%s\n", textEncryptor.encrypt(score));
                     printLn.close();
                     newHighScore = true;
                     }
@@ -87,7 +102,7 @@ class WriteScore{
     static void drawNewHighScoreMessage(Graphics g, Integer oldHighScore, Integer snakeLength){
         try {
             Scanner scannie = new Scanner(scoreFile);
-            String currentScore = scannie.next();
+            String currentScore = textEncryptor.decrypt(scannie.next());
             String highScoreString = "NEW HIGH SCORE: ".concat(currentScore);
             scannie.close();
             Graphics2D g2 = (Graphics2D)g;
@@ -156,7 +171,7 @@ class WriteScore{
     static int getScoreFromFile(){
         try{
             Scanner scannie = new Scanner(scoreFile);
-            int i = Integer.parseInt(scannie.next());
+            int i = Integer.parseInt(textEncryptor.decrypt(scannie.next()));
             scannie.close();
             return i;
         }

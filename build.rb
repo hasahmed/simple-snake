@@ -1,4 +1,4 @@
-def main()
+def main(cp)
     if ARGV.length == 0
         system("javac *.java")
         return
@@ -11,4 +11,4 @@ def main()
         system("rm *.class")
     end
 end
-main()
+main("hey")
