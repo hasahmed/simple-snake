@@ -1,4 +1,4 @@
-package com.hasahmed;
+package com.hasahmed.snakegame;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -39,24 +39,22 @@ class BigBang extends JComponent implements KeyListener, ActionListener, MouseLi
     world.draw(g);  
   }
   public void actionPerformed(ActionEvent e) {
-    world.update(); 
-    if (world.hasEnded()) timer.stop(); 
-  //  this.repaint(); 
+    world.update();
   }
   public void keyPressed(KeyEvent e) {
-    world.keyPressed(e); 
+    world.keyPressed(e);
     //this.repaint(); 
-  } 
-  public void keyTyped(KeyEvent e) { } 
-  public void keyReleased(KeyEvent e) { } 
-
-  public void mousePressed(MouseEvent e) { 
-    world.mousePressed(e); 
-    this.repaint(); 
   }
-  public void mouseReleased(MouseEvent e) { } 
-  public void mouseClicked(MouseEvent e) { } 
-  public void mouseEntered(MouseEvent e) { } 
-  public void mouseExited(MouseEvent e) { } 
+  public void keyTyped(KeyEvent e) { }
+  public void keyReleased(KeyEvent e) { }
+
+  public void mousePressed(MouseEvent e) {
+    world.mousePressed(e);
+    this.repaint();
+  }
+  public void mouseReleased(MouseEvent e) { }
+  public void mouseClicked(MouseEvent e) { }
+  public void mouseEntered(MouseEvent e) { }
+  public void mouseExited(MouseEvent e) { }
 
 }

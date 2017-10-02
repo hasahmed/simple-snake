@@ -1,4 +1,4 @@
-package com.hasahmed;
+package com.hasahmed.snakegame;
 
 import java.awt.*;
 import java.io.*;

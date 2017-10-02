@@ -1,8 +1,7 @@
-package com.hasahmed;// Circle.java
+package com.hasahmed.snakegame;// Circle.java
 import java.util.ArrayList;
 import java.awt.*; 
 import java.util.Random;
-import java.util.Arrays;
 
 class Circle {
 //instace variables
