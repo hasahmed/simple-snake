@@ -1,3 +1,5 @@
+package com.hasahmed;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -7,9 +9,8 @@ import java.awt.image.*;
 
 
 public class Snake implements World{
-  static String version = "1.0.3";
-  boolean displayStartScreen = true;
-  int printNum = 0;
+  private static String version = "1.0.3";
+  private boolean displayStartScreen = true;
   static int PLAY_AREA_X = 400;
   static int PLAY_AREA_Y = 400;
   static JFrame frame;

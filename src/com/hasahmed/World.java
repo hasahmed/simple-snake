@@ -1,4 +1,6 @@
-import java.awt.*; 
+package com.hasahmed;
+
+import java.awt.*;
 import java.awt.event.*; 
 
 interface World  {
