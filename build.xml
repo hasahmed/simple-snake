@@ -6,7 +6,7 @@
     <!-- set global properties for this build -->
     <property name="pkgname" value="com/hasahmed/simplesnake" />
     <property name="src" location="src/${pkgname}" />
-    <property name="out" location="out/${pkgname}" />
+    <property name="out" location="out/" />
     <property name="dist" location="dist" />
     <property name="lib" location="lib" />
     <property name="jasypt" value="jasypt-1.9.2.jar" />
