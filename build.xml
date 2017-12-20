@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<project name="simplesnake" default="compile" basedir=".">
+    <description>
+        Build file for SimpleSnake
+    </description>
+    <!-- set global properties for this build -->
+    <property name="pkgname" value="com/hasahmed/simplesnake" />
+    <property name="src" location="src/${pkgname}" />
+    <property name="out" location="out/${pkgname}" />
+    <property name="dist" location="dist" />
+    <property name="lib" location="lib" />
+    <property name="jasypt" value="jasypt-1.9.2.jar" />
+    <property name="manifest" value="Manifest.txt" />
+
+    <path id="classpath">
+        <fileset dir="${lib}">
+            <include name="${jasypt}" />
+        </fileset>
+    </path>
+
+    <target name="init">
+        <mkdir dir="${out}"/>
+    </target>
+
+    <target name="compile" depends="init"
+        description="compile the source">
+        <javac srcdir="${src}" destdir="${out}">
+            <classpath refid="classpath" />
+        </javac>
+    </target>
+
+    <target name="jar" depends="compile"
+        description="generate the jar file">
+        <mkdir dir="${dist}/jar" />
+
+        <jar basedir="${out}" manifest="${manifest}" destfile="${dist}/jar/${ant.project.name}.jar">
+            <zipgroupfileset dir="${lib}" />
+        </jar> 
+    </target>
+
+    <target name="clean"
+        description="clean remove *.class files and *.jar files">
+        <!--[> Delete the ${build} and ${dist} directory trees <]-->
+        <delete dir="${out}"/>
+        <delete dir="${dist}"/>
+    </target>
+
+</project>
+
