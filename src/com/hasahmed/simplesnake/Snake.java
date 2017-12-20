@@ -211,19 +211,14 @@ public class Snake implements World{
     }
 
     public static void main(String[] args) throws IOException {
-        try {
-            if(args.length > 0){
-                if(args[0].compareTo("--version") == 0){
-                    System.out.println(version);
-                    return;
-                }
-                else{
-                    resetSpeed = Integer.parseInt(args[0]);
-                }
+        if(args.length > 0) {
+            if(args[0].compareTo("--version") == 0){
+                System.out.println(version);
+                return;
             }
-        }
-        catch(ArrayIndexOutOfBoundsException e){
-            //do nothing
+            else{
+                resetSpeed = Integer.parseInt(args[0]);
+            }
         }
         WriteScore.init();
         System.setProperty("sun.java2d.opengl", "True");
