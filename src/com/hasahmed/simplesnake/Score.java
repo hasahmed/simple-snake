@@ -36,6 +36,7 @@ class Score{
 }
 class WriteScore{
     private static Point GAMEOVER_LOC = new Point(140, 200);
+    // TODO: implement a switch of save file location for other OS's
     private static String OS = System.getProperty("os.name").toLowerCase();
     private static String saveLoc = "/Users/" + System.getProperty("user.name").concat("/.shs");
     private static File scoreFile = new File(saveLoc);
