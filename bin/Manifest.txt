@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Created-By: Hasan Y Ahmed
-Class-Path: ./jasypt-1.9.2.jar
-Main-Class: Snake
-

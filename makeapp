@@ -1,0 +1,18 @@
+#!/bin/bash
+javapackager \
+    -deploy \
+    -native image \
+    -outfile Simple\ Snake \
+    -name Simple\ Snake \
+    -srcdir dist/jar/ \
+    -srcfiles simplesnake.jar \
+    -title Simple\ Snake \
+    -outdir dist/mac \
+    -appclass com.hasahmed.simplesnake.Snake \
+    -Bruntime=jre1.8.0_131.jre \
+    -nosign \
+    -Bicon=Snake.icns \
+    -Bmac.CFBundleIdentifier=com.hasahmed.simplesnake \
+    -Bmac.CFBundleVersion=1.0.0 \
+    -Bmac.CFBundleName="Simple Snake" \
+    -Bmac.category=Games && echo "Sucessfully built"
