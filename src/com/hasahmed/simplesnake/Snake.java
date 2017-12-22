@@ -170,7 +170,6 @@ public class Snake implements World{
         }
 
         game.begin();
-        System.out.println(frame.getInsets().top);
     }
 
 }
