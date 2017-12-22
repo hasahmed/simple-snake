@@ -6,33 +6,33 @@ import java.util.Scanner;
 import org.jasypt.util.text.*;
 
 class Score{
-  Color textColor = Color.WHITE;
-  private Integer scoreNum = 0;
-  Point pos = new Point(10, 409);
-  String scoreText = "SCORE: " + scoreNum;
-  
-  Score(int x, int y, Color c, int incVal){
-    this.pos.x = x;
-    this.pos.y = y;
-    this.textColor = c;
-  }
-  
-//default constructor
-  Score(){}
-  
-  void draw(Graphics g){
-    g.setColor(textColor);
+    Color textColor = Color.WHITE;
+    private Integer scoreNum = 0;
+    Point pos = new Point(10, 409);
+    String scoreText = "SCORE: " + scoreNum;
+
+    Score(int x, int y, Color c, int incVal){
+        this.pos.x = x;
+        this.pos.y = y;
+        this.textColor = c;
+    }
+
+    //default constructor
+    Score(){}
+
+    void draw(Graphics g){
+        g.setColor(textColor);
 //    g.setFont(new Font("TimesRoman", Font.PLAIN, 10));
-    g.setFont(new Font("AndaleMono", Font.PLAIN, 10));
-    g.drawString(this.scoreText, this.pos.x, this.pos.y);
-  }
-  void addTo(){
-    scoreNum++;
-    scoreText = "SCORE: ".concat(scoreNum.toString());
-  }
-  Integer getScore(){
-    return this.scoreNum;
-  }
+        g.setFont(new Font("AndaleMono", Font.PLAIN, 10));
+        g.drawString(this.scoreText, this.pos.x, this.pos.y);
+    }
+    void addTo(){
+        scoreNum++;
+        scoreText = "SCORE: ".concat(scoreNum.toString());
+    }
+    Integer getScore(){
+        return this.scoreNum;
+    }
 }
 class WriteScore{
     private static Point GAMEOVER_LOC = new Point(140, 200);
@@ -69,16 +69,16 @@ class WriteScore{
         try{
             Scanner scannie = new Scanner(scoreFile);
             String currentScore = textEncryptor.decrypt(scannie.next());
-                if (Integer.parseInt(score) > Integer.parseInt(currentScore)){
+            if (Integer.parseInt(score) > Integer.parseInt(currentScore)){
 
-                    ///////text encryptor
-                    PrintWriter printLn = new PrintWriter(scoreFile);
-                    printLn.printf("%s" + "%n", textEncryptor.encrypt(score));
-                    printLn.close();
-                    scannie.close();
-                    newHighScore = true;
-                }
-                else newHighScore = false;        }
+                ///////text encryptor
+                PrintWriter printLn = new PrintWriter(scoreFile);
+                printLn.printf("%s" + "%n", textEncryptor.encrypt(score));
+                printLn.close();
+                scannie.close();
+                newHighScore = true;
+            }
+            else newHighScore = false;        }
         catch(FileNotFoundException e){
             e.printStackTrace();
             try{
@@ -91,7 +91,7 @@ class WriteScore{
                     printLn.printf("%s\n", textEncryptor.encrypt(score));
                     printLn.close();
                     newHighScore = true;
-                    }
+                }
                 else newHighScore = false;
             }
             catch(IOException f){
@@ -99,7 +99,7 @@ class WriteScore{
             }
         }
     }
-    
+
     static void drawNewHighScoreMessage(Graphics g, Integer oldHighScore, Integer snakeLength){
         try {
             Scanner scannie = new Scanner(scoreFile);
@@ -142,10 +142,10 @@ class WriteScore{
                 g.drawString("The final snake length was ".concat(snakeLength.toString()), 120, 260);
                 g.drawString("Press R to restart", 148, 275);
                 newHighScore = false;
-                }
-                catch(IOException f){
-                    f.printStackTrace();
-                }
+            }
+            catch(IOException f){
+                f.printStackTrace();
+            }
         }
     }
 
@@ -153,7 +153,7 @@ class WriteScore{
 
 
 //draws
-    
+
     static void drawNoHighScore(Graphics g, Integer currentGameScore, Integer highScore, Integer snakeLength){
         g.setColor(Color.WHITE);
         Font saveFont = g.getFont();
@@ -184,12 +184,12 @@ class WriteScore{
     static boolean isWindows() {
         return (OS.indexOf("win") >= 0);
     }
-    
+
     static boolean isMac() {
         return (OS.indexOf("mac") >= 0);
     }
     static boolean isUnix() {
         return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0 );
 
-    }    
+    }
 }
