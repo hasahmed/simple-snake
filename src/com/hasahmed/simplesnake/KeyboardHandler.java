@@ -13,21 +13,26 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class KeyboardHandler {
-    static Point speed = new Point(0, 0);
-    static int keyOpp = 0;
+    Point speed = new Point(0, 0);
+    int keyOpp = 0;
+    int speedIncrement;
+
+    KeyboardHandler(Snake snake){
+        this.speedIncrement = snake.RADIUS * 2;
+    }
     /**
      * dirls: A 2 element list the records array key presses. This is so that when 2 array keys are pressed
      * in the same 'tick' the second one isn't lost
      */
-    static Dir[] dirls = new Dir[2];
-    static String saveSpeed;
+    Dir[] dirls = new Dir[2];
+    String saveSpeed;
 
 
     /**
      * Finds the first non-null position of the list and inserts there
      * @param d The direction to be added to the list
      */
-    static void add(Dir d){
+    void add(Dir d){
         for (int i = 0; i < dirls.length; i++){
             if (dirls[i] == null){
                 dirls[i] = d;
@@ -39,7 +44,7 @@ public class KeyboardHandler {
      * removes the 0th element of the dirls Array, and moves the 1th element to its place, replacing the 1th
      * element with null
      */
-    static void dirlsRemoveFirst(){
+    void dirlsRemoveFirst(){
         dirls[0] = dirls[1];
         dirls[1] = null;
     }
@@ -51,63 +56,63 @@ public class KeyboardHandler {
         }
     }
 
-    static void setDir(Dir d){
+    void setDir(Dir d){
         keyOpp++;
         if (d == Dir.UP){
-            if(KeyboardHandler.getDir() != Dir.DOWN)
-                speed.setLocation(0, -10);
+            if(this.getDir() != Dir.DOWN)
+                speed.setLocation(0, -speedIncrement);
         }
 
         else if (d == Dir.DOWN){
-            if(KeyboardHandler.getDir() != Dir.UP)
-                speed.setLocation(0, 10);
+            if(this.getDir() != Dir.UP)
+                speed.setLocation(0, speedIncrement);
         }
 
         else if (d == Dir.LEFT) {
-            if(KeyboardHandler.getDir() != Dir.RIGHT)
-                speed.setLocation(-10, 0);
+            if(this.getDir() != Dir.RIGHT)
+                speed.setLocation(-speedIncrement, 0);
         }
 
         else if (d == Dir.RIGHT) {
-            if(KeyboardHandler.getDir() != Dir.LEFT)
-                speed.setLocation(10, 0);
+            if(this.getDir() != Dir.LEFT)
+                speed.setLocation(speedIncrement, 0);
         }
 
         else if (d == Dir.STOP) speed.setLocation(0, 0);
     }
-    static Dir getDir(){
-        if (speed.equals(new Point(0, -10))) return Dir.UP;
-        else if (speed.equals(new Point(0, 10))) return Dir.DOWN;
-        else if (speed.equals(new Point(-10, 0))) return Dir.LEFT;
-        else if (speed.equals(new Point(10, 0))) return Dir.RIGHT;
+    Dir getDir(){
+        if (speed.equals(new Point(0, -speedIncrement))) return Dir.UP;
+        else if (speed.equals(new Point(0, speedIncrement))) return Dir.DOWN;
+        else if (speed.equals(new Point(-speedIncrement, 0))) return Dir.LEFT;
+        else if (speed.equals(new Point(speedIncrement, 0))) return Dir.RIGHT;
         return Dir.STOP;
     }
-    static Point getSpeed(){
-        if (speed.equals(new Point(0, -10))) return new Point(0, -10);
-        else if (speed.equals(new Point(0, 10))) return new Point(0, 10);
-        else if (speed.equals(new Point(-10, 0))) return new Point(-10, 0);
-        else if (speed.equals(new Point(10, 0))) return new Point(10, 0);
+    Point getSpeed(){
+        if (speed.equals(new Point(0, -speedIncrement))) return new Point(0, -speedIncrement);
+        else if (speed.equals(new Point(0, speedIncrement))) return new Point(0, speedIncrement);
+        else if (speed.equals(new Point(-speedIncrement, 0))) return new Point(-speedIncrement, 0);
+        else if (speed.equals(new Point(speedIncrement, 0))) return new Point(speedIncrement, 0);
         return new Point(0, 0);
     }
-    static void right(){
+    void right(){
         add(Dir.RIGHT);
         if(getDir() == Dir.LEFT)
             if(dirls[0] == Dir.RIGHT)
                 dirlsRemoveFirst();
     }
-    static void left(){
+    void left(){
         add(Dir.LEFT);
         if(getDir() == Dir.RIGHT)
             if(dirls[0] == Dir.LEFT)
                 dirlsRemoveFirst();
     }
-    static void up(){
+    void up(){
         add(Dir.UP);
         if(        getDir() == Dir.DOWN
                 && dirls[0] == Dir.UP)
             dirlsRemoveFirst(); //execute
     }
-    static void down(){
+    void down(){
         if (dirls[keyOpp] != Dir.UP
                 && getDir() != Dir.STOP)
             add(Dir.DOWN); //execute
@@ -116,8 +121,8 @@ public class KeyboardHandler {
                 && dirls[0] == Dir.DOWN)
             dirlsRemoveFirst(); //execute
     }
-    static void handleKeyPressed(KeyEvent e, Snake game) {
-        if (!game.gameOver && KeyboardHandler.keyOpp < 2){
+    void handleKeyPressed(KeyEvent e, Snake game) {
+        if (!game.gameOver && this.keyOpp < 2){
 
             if (e.getKeyCode() == KeyEvent.VK_RIGHT){
                 right();

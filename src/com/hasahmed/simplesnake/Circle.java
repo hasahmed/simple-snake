@@ -4,41 +4,40 @@ import java.awt.*;
 import java.util.Random;
 
 class Circle {
-//instace variables
-  int keyOpp = 0;
-  Point pos = new Point(0, 0);
-  Point speed = new Point(0, -10);
-  Point lastPos = new Point(0, 0);
-  int radius;
-  Color color;
-  
-  
-//constructor 
-  Circle(int x, int y, int radius, Color color) {
-    this.pos.setLocation(x, y);
-    this.radius = radius;
-    this.color = color;
-    this.lastPos.setLocation(x - this.speed.x, y - this.speed.y);
-  }
-  void draw(Graphics g) {
-    g.setColor(this.color); 
-    g.fillOval(this.pos.x - this.radius, this.pos.y - this.radius, this.radius * 2, this.radius * 2); 
-    g.setColor(Color.BLACK);
-    g.drawOval(this.pos.x - this.radius, this.pos.y - this.radius, this.radius * 2, this.radius * 2); 
-  }
-  boolean isOutOfBounds(){
-      int x = this.pos.x;
-      int y = this.pos.y;
+    //instace variables
+    Point pos = new Point(0, 0);
+    Point speed = new Point(0, -10);
+    Point lastPos = new Point(0, 0);
+    int radius;
+    Color color;
 
-      if (x > Snake.PLAY_AREA_X - 5 || x < 0 + 10 || y > Snake.PLAY_AREA_Y - 5 || y <= 0 + 5) return true;
-      return false;
-  }
-  int getX(){
-    return this.pos.x;
-  }
-  int getY() {
-    return this.pos.y;
-  }
+    //constructor
+    Circle(int x, int y, int radius, Color color) {
+        this.pos.setLocation(x, y);
+        this.radius = radius;
+        this.color = color;
+        this.lastPos.setLocation(x - this.speed.x, y - this.speed.y);
+    }
+    void draw(Graphics g) {
+        g.setColor(this.color);
+        g.fillOval(this.pos.x - this.radius, this.pos.y - this.radius, this.radius * 2, this.radius * 2);
+        g.setColor(Color.BLACK);
+        g.drawOval(this.pos.x - this.radius, this.pos.y - this.radius, this.radius * 2, this.radius * 2);
+    }
+    boolean isOutOfBounds(){
+        int x = this.pos.x;
+        int y = this.pos.y;
+
+        //5, 10 magic numbers?
+        if (x > Snake.PLAY_AREA_X - 5 || x < 10 || y > Snake.PLAY_AREA_Y - 5 || y <= 5) return true;
+        return false;
+    }
+    int getX(){
+        return this.pos.x;
+    }
+    int getY() {
+        return this.pos.y;
+    }
 
 } // end circle 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -47,21 +46,19 @@ class Circle {
 
 //BODY//
 class Body extends ArrayList<Circle>{
-//instance variables
-  Circle head;
-  Color bodyColor;
+    //instance variables
+    Circle head;
+    Color bodyColor;
+    KeyboardHandler keyboardHandler;
 
-  
-//constructors
-  public Body(int radius, Color color, int length){
-    this.head = new Circle((Snake.PLAY_AREA_X/2) + 15, (Snake.PLAY_AREA_Y /2) + 15, radius, color);
-    this.add(head);
-    fillWithCircles(length);
-  }
-///
 
-  
-//methods
+    //constructors
+    public Body(int radius, Color color, int length, int startX, int startY, KeyboardHandler keyboardHandler){
+        this.head = new Circle(startX, startY, radius, color);
+        this.add(head);
+        this.keyboardHandler = keyboardHandler;
+        fillWithCircles(length);
+    }
 
     /**
      * fills this (the Body) with a number of circles, and sets their locations such that they correctly stack vertically
@@ -69,8 +66,10 @@ class Body extends ArrayList<Circle>{
      * @param numOfCircles the number of circles to fill the body with
      */
     void fillWithCircles(int numOfCircles) {
-        for (int i = 1; i < numOfCircles + 1; i++) {
-            this.add(new Circle(this.get(i - 1).pos.x, this.get(i - 1).pos.y + this.get(i - 1).radius * 2, head.radius, bodyColor));
+        for (int i = 1; i < numOfCircles + 1; i++) { //loop numOfCircles except skip head because its already there
+            this.add(new Circle(this.get(i - 1).pos.x,
+                    this.get(i - 1).pos.y + this.get(i - 1).radius * 2,
+                    head.radius, bodyColor));
         }
     }
 
@@ -90,18 +89,16 @@ class Body extends ArrayList<Circle>{
             this.add(new Circle(this.get(this.size() - 1).pos.x, this.get(this.size() - 1).pos.y, head.radius, bodyColor));
         }
     }
-
-
-//updatePos(): updates the position of the snake, by adding a new circle to the front of the 
-//body, and removing one from the back.
-
     /**
      * Updates the position of the snake.
      * This is done by removing moving the tail of the snake, and appending a new head
      */
     void updatePos(){
         Circle ref = this.get(0);
-        this.add(0, new Circle(ref.getX() + KeyboardHandler.speed.x, ref.getY() + KeyboardHandler.speed.y, ref.radius, ref.color));
+        this.add(0,
+                new Circle(ref.getX() + keyboardHandler.speed.x,
+                        ref.getY() + keyboardHandler.speed.y,
+                        ref.radius, ref.color));
         this.remove(this.get(this.size() -1));
     }
 
@@ -111,10 +108,10 @@ class Body extends ArrayList<Circle>{
     void rainbowUpdatePos(){
         Random randy = new Random();
         Circle ref = this.get(0);
-        this.add(0, new Circle(ref.getX() + KeyboardHandler.speed.x,
-                        ref.getY() + KeyboardHandler.speed.y,
-                        ref.radius,
-                        new Color(randy.nextInt(255),
+        this.add(0, new Circle(ref.getX() + keyboardHandler.speed.x,
+                ref.getY() + keyboardHandler.speed.y,
+                ref.radius,
+                new Color(randy.nextInt(255),
                         randy.nextInt(255), randy.nextInt(255))));
         this.remove(this.get(this.size() -1));
     }

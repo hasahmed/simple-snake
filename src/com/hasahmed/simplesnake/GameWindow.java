@@ -11,14 +11,14 @@ import java.awt.event.*;
 public class GameWindow extends JFrame{
     Dimension screenDimensions = Toolkit.getDefaultToolkit().getScreenSize();
 
-
-    GameWindow(String windowTitle){
+    GameWindow(String windowTitle, int width, int height){
         super(windowTitle);
         this.setVisible(true);
         this.setResizable(false);
         this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         this.setResizable(false);
         this.setFocusable(true);
+        this.setSize(width, height);
     }
 
     void addGame(BigBang game){

@@ -30,8 +30,8 @@ class Frills {
         g.drawString("ESC to quit", 175, 365);
         g.drawString("P to pause", 175, 380);
     }
-    static void drawPauseGraphics(Graphics g){
-        String d = KeyboardHandler.saveSpeed;
+    static void drawPauseGraphics(Graphics g, KeyboardHandler keyboardHandler){
+        String d = keyboardHandler.saveSpeed;
         g.setFont(new Font("AndaleMono", Font.BOLD, 20));
         g.setColor(Color.GREEN);
         if (d.equals("UP")){

@@ -11,7 +11,7 @@ public class Snake implements World{
     static int PLAY_AREA_X = 400;
     static int PLAY_AREA_Y = 400;
 //    private static int preLoop = 10010; //loop the game a lot so that it will be faster?
-    private static int preLoop = 1; //loop the game a lot so that it will be faster?
+    private static int preLoop = 2; //loop the game a lot so that it will be faster?
     private int STARTING_LENGTH = 5;
     private static GameWindow gameWindow;
     private boolean paused = false;
@@ -26,44 +26,68 @@ public class Snake implements World{
     boolean drawMode = false;
     boolean gameOver = false;
     Score score = new Score();
-    Body body = new Body(RADIUS, BODY_COLOR, STARTING_LENGTH);
-    Food food = new Food(FOOD_COLOR, body);
+    Body body;
+    Food food;
     Circle head;
     Point saveSpeed;
+    KeyboardHandler keyboardHandler;
 
     int scoreWrittenToFile = WriteScore.getScoreFromFile();
+
+    Snake(){
+        keyboardHandler = new KeyboardHandler(this);
+        endCalled = false;
+        displayStartScreen = true;
+        keyboardHandler.setDir(KeyboardHandler.Dir.STOP);
+        drawMode = false;
+        gameOver = false;
+        score = new Score();
+        body = new Body(RADIUS,
+                BODY_COLOR,
+                STARTING_LENGTH,
+                WIDTH / 2,
+                HEIGHT/ 2,
+                keyboardHandler);
+        head = body.head;
+        food = new Food(FOOD_COLOR, body);
+        scoreWrittenToFile = WriteScore.getScoreFromFile();
+    }
 
     void reset(){
         endCalled = false;
         displayStartScreen = true;
-        KeyboardHandler.setDir(KeyboardHandler.Dir.STOP);
+        keyboardHandler.setDir(KeyboardHandler.Dir.STOP);
         drawMode = false;
         gameOver = false;
         score = new Score();
-        body = new Body(RADIUS, BODY_COLOR, 5);
+        body = new Body(RADIUS,
+                BODY_COLOR,
+                STARTING_LENGTH,
+                WIDTH / 2,
+                HEIGHT/ 2,
+                keyboardHandler);
+        head = body.head;
         food = new Food(FOOD_COLOR, body);
         scoreWrittenToFile = WriteScore.getScoreFromFile();
     }
 
     //update
     public void update() {
-        KeyboardHandler.setDir(KeyboardHandler.dirls[0]);
-        KeyboardHandler.dirlsRemoveFirst();
+        keyboardHandler.setDir(keyboardHandler.dirls[0]);
+        keyboardHandler.dirlsRemoveFirst();
 
 //variables
         head = body.get(0);
-        KeyboardHandler.keyOpp = 0;
+        keyboardHandler.keyOpp = 0;
         if (head.isOutOfBounds() || body.headOverlappingBody()){
             body.redHead();
             gameOver = true;
             if (!endCalled) end();
         }
 //updatePos
-        if (!paused && !gameOver && KeyboardHandler.getDir() != KeyboardHandler.Dir.STOP) body.updatePos();
-
+        if (!paused && !gameOver && keyboardHandler.getDir() != KeyboardHandler.Dir.STOP) body.updatePos();
 //drawMode
         if(drawMode) this.body.addCircle();
-
 //foodCollision
         if(food.isOverlappingHead(head)){
             body.addCircle(FOOD_GROWTH);
@@ -91,7 +115,7 @@ public class Snake implements World{
             }
         }
         score.draw(g);
-        if (paused) Frills.drawPauseGraphics(g);
+        if (paused) Frills.drawPauseGraphics(g, keyboardHandler);
 
     }//end draw
 
@@ -102,15 +126,15 @@ public class Snake implements World{
     void pause(){
         if (!paused){
             body.redHead();
-            saveSpeed = KeyboardHandler.getSpeed();
-            KeyboardHandler.saveSpeed = KeyboardHandler.getDir().value;
+            saveSpeed = keyboardHandler.getSpeed();
+            keyboardHandler.saveSpeed = keyboardHandler.getDir().value;
             paused = true;
-            KeyboardHandler.setDir(KeyboardHandler.Dir.STOP);
+            keyboardHandler.setDir(KeyboardHandler.Dir.STOP);
         }
         else{
             body.blackHead();
             paused = false;
-            KeyboardHandler.speed.setLocation(saveSpeed);
+            keyboardHandler.speed.setLocation(saveSpeed);
         }
     }
 
@@ -120,7 +144,7 @@ public class Snake implements World{
     }
 
     public void keyPressed(KeyEvent e){
-        KeyboardHandler.handleKeyPressed(e, this);
+        keyboardHandler.handleKeyPressed(e, this);
     }
 
     void end(){
@@ -128,7 +152,7 @@ public class Snake implements World{
         WriteScore.writeToFile(score.getScore().toString());
     }
     void init(){
-        update();
+//        update();
         body.headOverlappingBody();
         head.isOutOfBounds();
     }
@@ -155,10 +179,9 @@ public class Snake implements World{
          */
 
         // gameWindow
-        gameWindow = new GameWindow("Simple Snake");
+        gameWindow = new GameWindow("Simple Snake", WIDTH, HEIGHT);
         gameWindow.addGame(game);
         gameWindow.setColor(Color.GRAY);
-        gameWindow.setSize(WIDTH, HEIGHT);
         gameWindow.center();
 
         for (; preLoop >= 0; preLoop--){ //this is here so that java will make the code in init native...
