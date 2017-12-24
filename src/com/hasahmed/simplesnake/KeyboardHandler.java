@@ -17,8 +17,8 @@ public class KeyboardHandler {
     int keyOpp = 0;
     int speedIncrement;
 
-    KeyboardHandler(Snake snake){
-        this.speedIncrement = snake.RADIUS * 2;
+    KeyboardHandler(Globals globals){
+        this.speedIncrement = globals.blobRadius * 2;
     }
     /**
      * dirls: A 2 element list the records array key presses. This is so that when 2 array keys are pressed
