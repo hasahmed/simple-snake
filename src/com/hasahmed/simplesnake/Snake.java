@@ -2,7 +2,6 @@ package com.hasahmed.simplesnake;
 
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.*;
 import java.io.*;
 
 
@@ -11,10 +10,10 @@ public class Snake implements World{
     boolean displayStartScreen = true;
     static int PLAY_AREA_X = 400;
     static int PLAY_AREA_Y = 400;
-    private static JFrame frame;
 //    private static int preLoop = 10010; //loop the game a lot so that it will be faster?
     private static int preLoop = 1; //loop the game a lot so that it will be faster?
     private int STARTING_LENGTH = 5;
+    private static GameWindow gameWindow;
     private boolean paused = false;
     boolean endCalled = false; // keep end() from being called every tic
     int RADIUS = 5;
@@ -117,7 +116,7 @@ public class Snake implements World{
 
 
     void closeWindow(){
-        frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+        gameWindow.closeWindow();
     }
 
     public void keyPressed(KeyEvent e){
@@ -144,26 +143,24 @@ public class Snake implements World{
                 resetSpeed = Integer.parseInt(args[0]);
             }
         }
+
         WriteScore.init();
         System.setProperty("sun.java2d.opengl", "True");
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
         //BigBang
         Snake s = new Snake();
         BigBang game = new BigBang(resetSpeed, s);
+        /* TODO: Need to figure out which order classes are instantiated in so as to figure out where variables
+         * can be set. Such as the location of the frills and such
+         */
 
-        //JFrame
-        frame = new JFrame("Simple Snake");
-        frame.getContentPane().add(game);
-        frame.getContentPane().setBackground(Color.GRAY);
-        frame.setFocusable(true);
-        frame.addKeyListener(game);
-        game.addMouseListener(game);
-        frame.setVisible(true);
-        frame.setSize(WIDTH, HEIGHT);
-        frame.setLocation(dim.width/2 - frame.getSize().width /2, dim.height/2 - frame.getSize().height/2);
-        frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-        frame.setResizable(false);
+        // gameWindow
+        gameWindow = new GameWindow("Simple Snake");
+        gameWindow.addGame(game);
+        gameWindow.setColor(Color.GRAY);
+        gameWindow.setSize(WIDTH, HEIGHT);
+        gameWindow.center();
+
         for (; preLoop >= 0; preLoop--){ //this is here so that java will make the code in init native...
             // Is it actually faster? Who knows?
             s.init();
