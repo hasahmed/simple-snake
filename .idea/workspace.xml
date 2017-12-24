@@ -6,16 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="000bab05-d386-44e4-aeb3-104a405e795e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/Constants.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/Globals.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/Circle.java" afterPath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/Circle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/Frills.java" afterPath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/Frills.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/GameWindow.java" afterPath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/GameWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/KeyboardHandler.java" afterPath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/KeyboardHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/Snake.java" afterPath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/Snake.java" />
-    </list>
+    <list default="true" id="000bab05-d386-44e4-aeb3-104a405e795e" name="Default" comment="" />
     <ignored path="snake-with-ai.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
