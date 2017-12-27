@@ -60,7 +60,6 @@ public class Snake implements World{
         displayStartScreen = true;
         keyboardHandler.setDir(KeyboardHandler.Dir.STOP);
         drawMode = false;
-
         gameOver = false;
         score = new Score();
         body = new Body(
@@ -104,6 +103,7 @@ public class Snake implements World{
 
     //draw
     public void draw(Graphics g){
+//        System.out.println("Draw has been called");
         if (displayStartScreen){
             frills.drawStartScreen(g);
         }

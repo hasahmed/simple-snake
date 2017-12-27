@@ -25,7 +25,7 @@ class Constants {
 
 
     //
-    final static int SCREEN_UPPER_BOARDER_OFFSET = 25;
+    final static int SCREEN_UPPER_BOARDER_OFFSET = 36;
 
 
     static int getFrillThickness(int windowSize){

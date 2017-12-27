@@ -17,7 +17,7 @@ public class GameWindow extends JFrame{
         this.setVisible(true);
         this.setResizable(false);
         this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-        this.setResizable(false);
+        this.setResizable(true);
         this.setFocusable(true);
         windowSize = getBiggestPossiblePlayAreaSize();
         this.setSize(windowSize, windowSize);

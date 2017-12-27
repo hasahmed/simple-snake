@@ -7,6 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="000bab05-d386-44e4-aeb3-104a405e795e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/BigBang.java" afterPath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/BigBang.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/Constants.java" afterPath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/Constants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/GameWindow.java" afterPath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/GameWindow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/Snake.java" afterPath="$PROJECT_DIR$/src/com/hasahmed/simplesnake/Snake.java" />
     </list>
     <ignored path="snake-with-ai.iws" />
@@ -31,14 +35,30 @@
       <file leaf-file-name="Snake.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/Snake.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+            <state relative-caret-position="150">
+              <caret line="167" column="22" selection-start-line="167" selection-start-column="22" selection-end-line="167" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4564#4565#0" expanded="true" />
-                <element signature="e#4604#4605#0" expanded="true" />
-                <element signature="e#4645#4646#0" expanded="true" />
-                <element signature="e#4702#4703#0" expanded="true" />
+                <element signature="e#4617#4618#0" expanded="true" />
+                <element signature="e#4657#4658#0" expanded="true" />
+                <element signature="e#4698#4699#0" expanded="true" />
+                <element signature="e#4755#4756#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BigBang.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/BigBang.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="226">
+              <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#876#877#0" expanded="true" />
+                <element signature="e#905#906#0" expanded="true" />
+                <element signature="e#954#955#0" expanded="true" />
+                <element signature="e#984#985#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -47,8 +67,8 @@
       <file leaf-file-name="Circle.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/Circle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+            <state relative-caret-position="405">
+              <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1364#1365#0" expanded="true" />
@@ -65,7 +85,7 @@
       <file leaf-file-name="Globals.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/Globals.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
+            <state relative-caret-position="150">
               <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
               <folding>
                 <element signature="e#663#664#0" expanded="true" />
@@ -80,14 +100,14 @@
       <file leaf-file-name="GameWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/GameWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="46" column="131" selection-start-line="46" selection-start-column="131" selection-end-line="46" selection-end-column="131" />
+            <state relative-caret-position="285">
+              <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#848#849#0" expanded="true" />
-                <element signature="e#906#907#0" expanded="true" />
-                <element signature="e#1139#1140#0" expanded="true" />
-                <element signature="e#1224#1225#0" expanded="true" />
+                <element signature="e#847#848#0" expanded="true" />
+                <element signature="e#905#906#0" expanded="true" />
+                <element signature="e#1138#1139#0" expanded="true" />
+                <element signature="e#1223#1224#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -96,8 +116,8 @@
       <file leaf-file-name="Frills.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/Frills.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+            <state relative-caret-position="225">
+              <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -106,8 +126,8 @@
       <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
+            <state relative-caret-position="240">
+              <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
               <folding>
                 <element signature="e#623#624#0" expanded="true" />
                 <element signature="e#674#675#0" expanded="true" />
@@ -130,16 +150,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BigBang.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/BigBang.java">
+      <file leaf-file-name="World.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/World.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="41" column="14" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
+            <state relative-caret-position="90">
+              <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
               <folding>
-                <element signature="e#935#936#0" expanded="true" />
-                <element signature="e#964#965#0" expanded="true" />
-                <element signature="e#1013#1014#0" expanded="true" />
-                <element signature="e#1043#1044#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -188,14 +205,14 @@
         <option value="$PROJECT_DIR$/src/com/hasahmed/snakegame/Snake.java" />
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/src/com/hasahmed/simplesnake/Score.java" />
-        <option value="$PROJECT_DIR$/src/com/hasahmed/simplesnake/BigBang.java" />
         <option value="$PROJECT_DIR$/src/com/hasahmed/simplesnake/GameFrame.java" />
         <option value="$PROJECT_DIR$/src/com/hasahmed/simplesnake/Frills.java" />
         <option value="$PROJECT_DIR$/src/com/hasahmed/simplesnake/Globals.java" />
         <option value="$PROJECT_DIR$/src/com/hasahmed/simplesnake/Circle.java" />
         <option value="$PROJECT_DIR$/src/com/hasahmed/simplesnake/KeyboardHandler.java" />
-        <option value="$PROJECT_DIR$/src/com/hasahmed/simplesnake/GameWindow.java" />
         <option value="$PROJECT_DIR$/src/com/hasahmed/simplesnake/Constants.java" />
+        <option value="$PROJECT_DIR$/src/com/hasahmed/simplesnake/GameWindow.java" />
+        <option value="$PROJECT_DIR$/src/com/hasahmed/simplesnake/BigBang.java" />
         <option value="$PROJECT_DIR$/src/com/hasahmed/simplesnake/Snake.java" />
       </list>
     </option>
@@ -607,7 +624,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="100" y="123" width="1080" height="573" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2215909" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2215909" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -616,7 +633,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39914772" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39914772" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5084746" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -639,7 +656,21 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/Snake.java</url>
+          <line>106</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/BigBang.java</url>
+          <line>36</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -654,10 +685,10 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4564#4565#0" expanded="true" />
-            <element signature="e#4604#4605#0" expanded="true" />
-            <element signature="e#4645#4646#0" expanded="true" />
-            <element signature="e#4702#4703#0" expanded="true" />
+            <element signature="e#4617#4618#0" expanded="true" />
+            <element signature="e#4657#4658#0" expanded="true" />
+            <element signature="e#4698#4699#0" expanded="true" />
+            <element signature="e#4755#4756#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -693,10 +724,11 @@
         <state relative-caret-position="375">
           <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
           <folding>
-            <element signature="e#935#936#0" expanded="true" />
-            <element signature="e#964#965#0" expanded="true" />
-            <element signature="e#1013#1014#0" expanded="true" />
-            <element signature="e#1043#1044#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#876#877#0" expanded="true" />
+            <element signature="e#905#906#0" expanded="true" />
+            <element signature="e#954#955#0" expanded="true" />
+            <element signature="e#984#985#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -747,10 +779,10 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4564#4565#0" expanded="true" />
-            <element signature="e#4604#4605#0" expanded="true" />
-            <element signature="e#4645#4646#0" expanded="true" />
-            <element signature="e#4702#4703#0" expanded="true" />
+            <element signature="e#4617#4618#0" expanded="true" />
+            <element signature="e#4657#4658#0" expanded="true" />
+            <element signature="e#4698#4699#0" expanded="true" />
+            <element signature="e#4755#4756#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -760,10 +792,11 @@
         <state relative-caret-position="405">
           <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
           <folding>
-            <element signature="e#935#936#0" expanded="true" />
-            <element signature="e#964#965#0" expanded="true" />
-            <element signature="e#1013#1014#0" expanded="true" />
-            <element signature="e#1043#1044#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#876#877#0" expanded="true" />
+            <element signature="e#905#906#0" expanded="true" />
+            <element signature="e#954#955#0" expanded="true" />
+            <element signature="e#984#985#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -784,10 +817,10 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4564#4565#0" expanded="true" />
-            <element signature="e#4604#4605#0" expanded="true" />
-            <element signature="e#4645#4646#0" expanded="true" />
-            <element signature="e#4702#4703#0" expanded="true" />
+            <element signature="e#4617#4618#0" expanded="true" />
+            <element signature="e#4657#4658#0" expanded="true" />
+            <element signature="e#4698#4699#0" expanded="true" />
+            <element signature="e#4755#4756#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -797,10 +830,11 @@
         <state relative-caret-position="375">
           <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
           <folding>
-            <element signature="e#935#936#0" expanded="true" />
-            <element signature="e#964#965#0" expanded="true" />
-            <element signature="e#1013#1014#0" expanded="true" />
-            <element signature="e#1043#1044#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#876#877#0" expanded="true" />
+            <element signature="e#905#906#0" expanded="true" />
+            <element signature="e#954#955#0" expanded="true" />
+            <element signature="e#984#985#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -822,29 +856,6 @@
         <state relative-caret-position="390">
           <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/World.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/BigBang.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="41" column="14" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
-          <folding>
-            <element signature="e#935#936#0" expanded="true" />
-            <element signature="e#964#965#0" expanded="true" />
-            <element signature="e#1013#1014#0" expanded="true" />
-            <element signature="e#1043#1044#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -885,10 +896,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
+          <folding>
+            <element signature="e#623#624#0" expanded="true" />
+            <element signature="e#674#675#0" expanded="true" />
+            <element signature="e#722#723#0" expanded="true" />
+            <element signature="e#774#775#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/Frills.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/World.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/GameWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#847#848#0" expanded="true" />
+            <element signature="e#905#906#0" expanded="true" />
+            <element signature="e#1138#1139#0" expanded="true" />
+            <element signature="e#1223#1224#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/Circle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+        <state relative-caret-position="405">
+          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1364#1365#0" expanded="true" />
@@ -897,6 +953,19 @@
             <element signature="e#1447#1448#0" expanded="true" />
             <element signature="e#6444#6445#0" expanded="true" />
             <element signature="e#6489#6490#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/Globals.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+          <folding>
+            <element signature="e#663#664#0" expanded="true" />
+            <element signature="e#710#711#0" expanded="true" />
+            <element signature="e#735#736#0" expanded="true" />
+            <element signature="e#772#773#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -915,64 +984,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/Globals.java">
+    <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/BigBang.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
-          <folding>
-            <element signature="e#663#664#0" expanded="true" />
-            <element signature="e#710#711#0" expanded="true" />
-            <element signature="e#735#736#0" expanded="true" />
-            <element signature="e#772#773#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/Frills.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/GameWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="46" column="131" selection-start-line="46" selection-start-column="131" selection-end-line="46" selection-end-column="131" />
+        <state relative-caret-position="226">
+          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#848#849#0" expanded="true" />
-            <element signature="e#906#907#0" expanded="true" />
-            <element signature="e#1139#1140#0" expanded="true" />
-            <element signature="e#1224#1225#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
-          <folding>
-            <element signature="e#623#624#0" expanded="true" />
-            <element signature="e#674#675#0" expanded="true" />
-            <element signature="e#722#723#0" expanded="true" />
-            <element signature="e#774#775#0" expanded="true" />
+            <element signature="e#876#877#0" expanded="true" />
+            <element signature="e#905#906#0" expanded="true" />
+            <element signature="e#954#955#0" expanded="true" />
+            <element signature="e#984#985#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hasahmed/simplesnake/Snake.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        <state relative-caret-position="150">
+          <caret line="167" column="22" selection-start-line="167" selection-start-column="22" selection-end-line="167" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4564#4565#0" expanded="true" />
-            <element signature="e#4604#4605#0" expanded="true" />
-            <element signature="e#4645#4646#0" expanded="true" />
-            <element signature="e#4702#4703#0" expanded="true" />
+            <element signature="e#4617#4618#0" expanded="true" />
+            <element signature="e#4657#4658#0" expanded="true" />
+            <element signature="e#4698#4699#0" expanded="true" />
+            <element signature="e#4755#4756#0" expanded="true" />
           </folding>
         </state>
       </provider>
