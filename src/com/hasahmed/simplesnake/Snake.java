@@ -60,6 +60,7 @@ public class Snake implements World{
         displayStartScreen = true;
         keyboardHandler.setDir(KeyboardHandler.Dir.STOP);
         drawMode = false;
+
         gameOver = false;
         score = new Score();
         body = new Body(
