@@ -4,43 +4,41 @@ import java.awt.*;
 import java.util.Random;
 
 class Circle {
-    //instace variables
-    Point pos = new Point(0, 0);
-    Point speed = new Point(0, -10);
-    Point lastPos = new Point(0, 0);
-    int radius;
-    Color color;
-    Globals globals;
+//instace variables
+  int keyOpp = 0;
+  Point pos = new Point(0, 0);
+  Point speed = new Point(0, -10);
+  Point lastPos = new Point(0, 0);
+  int radius;
+  Color color;
+  
+  
+//constructor 
+  Circle(int x, int y, int radius, Color color) {
+    this.pos.setLocation(x, y);
+    this.radius = radius;
+    this.color = color;
+    this.lastPos.setLocation(x - this.speed.x, y - this.speed.y);
+  }
+  void draw(Graphics g) {
+    g.setColor(this.color); 
+    g.fillOval(this.pos.x - this.radius, this.pos.y - this.radius, this.radius * 2, this.radius * 2); 
+    g.setColor(Color.BLACK);
+    g.drawOval(this.pos.x - this.radius, this.pos.y - this.radius, this.radius * 2, this.radius * 2); 
+  }
+  boolean isOutOfBounds(){
+      int x = this.pos.x;
+      int y = this.pos.y;
 
-    //constructor
-    Circle(int x, int y, int radius, Color color, Globals globals) {
-        this.pos.setLocation(x, y);
-        this.radius = radius;
-        this.color = color;
-        this.lastPos.setLocation(x - this.speed.x, y - this.speed.y);
-        this.globals = globals;
-    }
-    void draw(Graphics g) {
-        g.setColor(this.color);
-        g.fillOval(this.pos.x - this.radius, this.pos.y - this.radius, this.radius * 2, this.radius * 2);
-        g.setColor(Color.BLACK);
-        g.drawOval(this.pos.x - this.radius, this.pos.y - this.radius, this.radius * 2, this.radius * 2);
-    }
-    boolean isOutOfBounds(){
-        int x = this.pos.x;
-        int y = this.pos.y;
-        if (x > globals.playAreaSize - globals.frillThickness || // right-wall
-                x < globals.blobRadius * 2                    || // left-wall
-                y > globals.playAreaSize - globals.blobRadius || // bottom-wall
-                y <= globals.blobRadius * 2) return true;        // top-wall
-        return false;
-    }
-    int getX(){
-        return this.pos.x;
-    }
-    int getY() {
-        return this.pos.y;
-    }
+      if (x > Snake.PLAY_AREA_X - 5 || x < 0 + 10 || y > Snake.PLAY_AREA_Y - 5 || y <= 0 + 5) return true;
+      return false;
+  }
+  int getX(){
+    return this.pos.x;
+  }
+  int getY() {
+    return this.pos.y;
+  }
 
 } // end circle 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -49,27 +47,21 @@ class Circle {
 
 //BODY//
 class Body extends ArrayList<Circle>{
-    //instance variables
-    Circle head;
-    Color bodyColor;
-    KeyboardHandler keyboardHandler;
-    Globals globals;
+//instance variables
+  Circle head;
+  Color bodyColor;
 
+  
+//constructors
+  public Body(int radius, Color color, int length){
+    this.head = new Circle((Snake.PLAY_AREA_X/2) + 15, (Snake.PLAY_AREA_Y /2) + 15, radius, color);
+    this.add(head);
+    fillWithCircles(length);
+  }
+///
 
-    //constructors
-    public Body(int radius,
-                Color color,
-                int length,
-                int startX,
-                int startY,
-                KeyboardHandler keyboardHandler,
-                Globals globals){
-        this.globals = globals;
-        this.head = new Circle(startX, startY, radius, color, globals);
-        this.add(head);
-        this.keyboardHandler = keyboardHandler;
-        fillWithCircles(length);
-    }
+  
+//methods
 
     /**
      * fills this (the Body) with a number of circles, and sets their locations such that they correctly stack vertically
@@ -77,15 +69,8 @@ class Body extends ArrayList<Circle>{
      * @param numOfCircles the number of circles to fill the body with
      */
     void fillWithCircles(int numOfCircles) {
-        for (int i = 1; i < numOfCircles + 1; i++) { //loop numOfCircles except skip head because its already there
-            this.add(
-                    new Circle(
-                            this.get(i - 1).pos.x,
-                            this.get(i - 1).pos.y + this.get(i - 1).radius * 2,
-                            head.radius,
-                            bodyColor,
-                            globals)
-            );
+        for (int i = 1; i < numOfCircles + 1; i++) {
+            this.add(new Circle(this.get(i - 1).pos.x, this.get(i - 1).pos.y + this.get(i - 1).radius * 2, head.radius, bodyColor));
         }
     }
 
@@ -93,16 +78,7 @@ class Body extends ArrayList<Circle>{
      * add circle to the end of the body
      */
     void addCircle(){
-        this.add(
-                new Circle(
-                        this.get(
-                                this.size() - 1).pos.x,
-                                this.get(this.size() - 1).pos.y,
-                                head.radius,
-                                bodyColor,
-                                globals
-                )
-        );
+        this.add(new Circle(this.get(this.size() - 1).pos.x, this.get(this.size() - 1).pos.y, head.radius, bodyColor));
     }
 
     /**
@@ -111,33 +87,21 @@ class Body extends ArrayList<Circle>{
      */
     void addCircle(int num){
         for (int i = 0; i < num; i++){
-            this.add(
-                    new Circle(
-                            this.get(this.size() - 1).pos.x,
-                            this.get(this.size() - 1).pos.y,
-                            head.radius,
-                            bodyColor,
-                            globals
-                    )
-            );
+            this.add(new Circle(this.get(this.size() - 1).pos.x, this.get(this.size() - 1).pos.y, head.radius, bodyColor));
         }
     }
+
+
+//updatePos(): updates the position of the snake, by adding a new circle to the front of the 
+//body, and removing one from the back.
+
     /**
      * Updates the position of the snake.
      * This is done by removing moving the tail of the snake, and appending a new head
      */
     void updatePos(){
         Circle ref = this.get(0);
-        this.add(
-                0,
-                new Circle(
-                        ref.getX() + keyboardHandler.speed.x,
-                        ref.getY() + keyboardHandler.speed.y,
-                        ref.radius,
-                        ref.color,
-                        globals
-                )
-        );
+        this.add(0, new Circle(ref.getX() + KeyboardHandler.speed.x, ref.getY() + KeyboardHandler.speed.y, ref.radius, ref.color));
         this.remove(this.get(this.size() -1));
     }
 
@@ -147,20 +111,11 @@ class Body extends ArrayList<Circle>{
     void rainbowUpdatePos(){
         Random randy = new Random();
         Circle ref = this.get(0);
-        this.add(
-                0,
-                new Circle(
-                        ref.getX() + keyboardHandler.speed.x,
-                        ref.getY() + keyboardHandler.speed.y,
+        this.add(0, new Circle(ref.getX() + KeyboardHandler.speed.x,
+                        ref.getY() + KeyboardHandler.speed.y,
                         ref.radius,
-                        new Color(
-                                randy.nextInt(255),
-                                randy.nextInt(255),
-                                randy.nextInt(255)
-                        ),
-                        globals
-                )
-        );
+                        new Color(randy.nextInt(255),
+                        randy.nextInt(255), randy.nextInt(255))));
         this.remove(this.get(this.size() -1));
     }
 
@@ -195,8 +150,8 @@ class Body extends ArrayList<Circle>{
 
 class Food extends Circle{
     Body body;
-    Food(Color color, Body b, Globals globals){
-        super(0, 0, b.head.radius, color, globals);
+    Food(Color color, Body b){
+        super(0, 0, b.head.radius, color);
         this.moveToRandomPos();
         this.body = b;
         this.pos = new Point(0, 400);
@@ -209,12 +164,11 @@ class Food extends Circle{
     /**
      * Move the food to a random position
      */
-    void moveToRandomPos() {
-        // TODO: make the random movement correct
+    void moveToRandomPos(){
         Random randy = new Random();
-        int x = randy.nextInt(globals.playAreaSize / (globals.blobRadius * 2));
-        int y = randy.nextInt(globals.playAreaSize / (globals.blobRadius * 2));
-        this.pos.setLocation((x * 10) + 15, (y * 10) + 15); //why + 15?
+        int x = randy.nextInt(Snake.PLAY_AREA_X / 10);
+        int y = randy.nextInt(Snake.PLAY_AREA_Y / 10);
+        this.pos.setLocation((x * 10) + 15, (y * 10) + 15);
         while(this.isOutOfBounds()) moveToRandomPos();
     }
 

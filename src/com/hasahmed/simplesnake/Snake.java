@@ -5,96 +5,68 @@ import java.awt.event.*;
 import java.io.*;
 
 
-// A blob is what one snake component is called
-
 public class Snake implements World{
+    private static String version = "2.0.1";
     boolean displayStartScreen = true;
+    static int PLAY_AREA_X = 400;
+    static int PLAY_AREA_Y = 400;
 //    private static int preLoop = 10010; //loop the game a lot so that it will be faster?
-    private static int preLoop = 2; //loop the game a lot so that it will be faster?
+    private static int preLoop = 1; //loop the game a lot so that it will be faster?
+    private int STARTING_LENGTH = 5;
     private static GameWindow gameWindow;
     private boolean paused = false;
     boolean endCalled = false; // keep end() from being called every tic
-    Frills frills;
-//    static int HEIGHT = 432; //needs to be this because of the size of the size of OSX top of window
-//    static int WIDTH = playAreaSize + Frills.boarderWidth;
+    int RADIUS = 5;
+    int FOOD_GROWTH = 3;
+    static Integer resetSpeed = 75;
+    static int HEIGHT = 432; //needs to be this because of the size of the size of OSX top of window
+    static int WIDTH = PLAY_AREA_X + Frills.BOARDER_WIDTH;
     Color BODY_COLOR = Color.BLACK;
     Color FOOD_COLOR = Color.ORANGE;
     boolean drawMode = false;
     boolean gameOver = false;
-
     Score score = new Score();
-    Body body;
-    Food food;
+    Body body = new Body(RADIUS, BODY_COLOR, STARTING_LENGTH);
+    Food food = new Food(FOOD_COLOR, body);
     Circle head;
     Point saveSpeed;
-    KeyboardHandler keyboardHandler;
-    static Globals globals;
 
     int scoreWrittenToFile = WriteScore.getScoreFromFile();
-
-    Snake(Globals gbl){
-        this.globals = gbl;
-        frills = new Frills(globals);
-        keyboardHandler = new KeyboardHandler(globals);
-        endCalled = false;
-        displayStartScreen = true;
-        keyboardHandler.setDir(KeyboardHandler.Dir.STOP);
-        drawMode = false;
-        gameOver = false;
-        score = new Score();
-        body = new Body(
-                globals.blobRadius,
-                BODY_COLOR,
-                Constants.STARTING_SNAKE_BODY_LENGTH,
-                globals.getPlayAreaCenter(),
-                globals.getPlayAreaCenter(),
-                keyboardHandler,
-                globals);
-        head = body.head;
-        food = new Food(FOOD_COLOR, body, globals);
-        scoreWrittenToFile = WriteScore.getScoreFromFile();
-    }
 
     void reset(){
         endCalled = false;
         displayStartScreen = true;
-        keyboardHandler.setDir(KeyboardHandler.Dir.STOP);
+        KeyboardHandler.setDir(KeyboardHandler.Dir.STOP);
         drawMode = false;
         gameOver = false;
         score = new Score();
-        body = new Body(
-                globals.blobRadius,
-                BODY_COLOR,
-                Constants.STARTING_SNAKE_BODY_LENGTH,
-                globals.getPlayAreaCenter(),
-                globals.getPlayAreaCenter(),
-                keyboardHandler,
-                globals);
-        head = body.head;
-        food = new Food(FOOD_COLOR, body, globals);
+        body = new Body(RADIUS, BODY_COLOR, 5);
+        food = new Food(FOOD_COLOR, body);
         scoreWrittenToFile = WriteScore.getScoreFromFile();
     }
 
     //update
     public void update() {
-        keyboardHandler.setDir(keyboardHandler.dirls[0]);
-        keyboardHandler.dirlsRemoveFirst();
+        KeyboardHandler.setDir(KeyboardHandler.dirls[0]);
+        KeyboardHandler.dirlsRemoveFirst();
 
 //variables
         head = body.get(0);
-        keyboardHandler.keyOpp = 0;
+        KeyboardHandler.keyOpp = 0;
         if (head.isOutOfBounds() || body.headOverlappingBody()){
             body.redHead();
             gameOver = true;
             if (!endCalled) end();
         }
 //updatePos
-        if (!paused && !gameOver && keyboardHandler.getDir() != KeyboardHandler.Dir.STOP) body.updatePos();
+        if (!paused && !gameOver && KeyboardHandler.getDir() != KeyboardHandler.Dir.STOP) body.updatePos();
+
 //drawMode
         if(drawMode) this.body.addCircle();
+
 //foodCollision
         if(food.isOverlappingHead(head)){
-            body.addCircle(Constants.FOOD_GROWTH);
+            body.addCircle(FOOD_GROWTH);
             food.moveToRandomPos();
             score.addTo();
             while(food.hittingBody()) food.moveToRandomPos();
@@ -103,12 +75,11 @@ public class Snake implements World{
 
     //draw
     public void draw(Graphics g){
-//        System.out.println("Draw has been called");
         if (displayStartScreen){
-            frills.drawStartScreen(g);
+            Frills.drawStartScreen(g);
         }
         if(!displayStartScreen)food.draw(g);
-        frills.drawBorder(g);
+        Frills.drawBorder(g);
         body.draw(g);
         if (gameOver){
             if (score.getScore() > scoreWrittenToFile){
@@ -120,7 +91,7 @@ public class Snake implements World{
             }
         }
         score.draw(g);
-        if (paused) frills.drawPauseGraphics(g, keyboardHandler);
+        if (paused) Frills.drawPauseGraphics(g);
 
     }//end draw
 
@@ -131,15 +102,15 @@ public class Snake implements World{
     void pause(){
         if (!paused){
             body.redHead();
-            saveSpeed = keyboardHandler.getSpeed();
-            keyboardHandler.saveSpeed = keyboardHandler.getDir().value;
+            saveSpeed = KeyboardHandler.getSpeed();
+            KeyboardHandler.saveSpeed = KeyboardHandler.getDir().value;
             paused = true;
-            keyboardHandler.setDir(KeyboardHandler.Dir.STOP);
+            KeyboardHandler.setDir(KeyboardHandler.Dir.STOP);
         }
         else{
             body.blackHead();
             paused = false;
-            keyboardHandler.speed.setLocation(saveSpeed);
+            KeyboardHandler.speed.setLocation(saveSpeed);
         }
     }
 
@@ -149,7 +120,7 @@ public class Snake implements World{
     }
 
     public void keyPressed(KeyEvent e){
-        keyboardHandler.handleKeyPressed(e, this);
+        KeyboardHandler.handleKeyPressed(e, this);
     }
 
     void end(){
@@ -163,19 +134,39 @@ public class Snake implements World{
     }
 
     public static void main(String[] args) throws IOException {
-        System.setProperty("sun.java2d.opengl", "True");
+        if(args.length > 0) {
+            if(args[0].compareTo("--version") == 0){
+                System.out.println(version);
+                return;
+            }
+            else{
+                resetSpeed = Integer.parseInt(args[0]);
+            }
+        }
+
         WriteScore.init();
-        gameWindow = new GameWindow("Simple Snake");
-        globals = new Globals(gameWindow.windowSize);
-        Snake snake = new Snake(globals);
-        BigBang game = new BigBang(Constants.RESET_SPEED, snake);
+        System.setProperty("sun.java2d.opengl", "True");
+
+        //BigBang
+        Snake s = new Snake();
+        BigBang game = new BigBang(resetSpeed, s);
+        /* TODO: Need to figure out which order classes are instantiated in so as to figure out where variables
+         * can be set. Such as the location of the frills and such
+         */
 
         // gameWindow
+        gameWindow = new GameWindow("Simple Snake");
         gameWindow.addGame(game);
         gameWindow.setColor(Color.GRAY);
+        gameWindow.setSize(WIDTH, HEIGHT);
         gameWindow.center();
-        snake.init();
+
+        for (; preLoop >= 0; preLoop--){ //this is here so that java will make the code in init native...
+            // Is it actually faster? Who knows?
+            s.init();
+        }
 
         game.begin();
     }
+
 }

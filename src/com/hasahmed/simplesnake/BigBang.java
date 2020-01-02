@@ -32,7 +32,9 @@ class BigBang extends JComponent implements KeyListener, ActionListener, MouseLi
         timer.start();
         start();
     }
-
+    BigBang(World world) {
+        this(1000, world);
+    }
     public void paintComponent(Graphics g) {
         world.draw(g);
     }
@@ -41,7 +43,7 @@ class BigBang extends JComponent implements KeyListener, ActionListener, MouseLi
     }
     public void keyPressed(KeyEvent e) {
         world.keyPressed(e);
-//        this.repaint();
+        //this.repaint();
     }
     public void keyTyped(KeyEvent e) { }
     public void keyReleased(KeyEvent e) { }
