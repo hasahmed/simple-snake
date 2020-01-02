@@ -18,7 +18,7 @@ public class Snake implements World{
     boolean endCalled = false; // keep end() from being called every tic
     int RADIUS = 5;
     int FOOD_GROWTH = 3;
-    static Integer resetSpeed = 75;
+    static Integer frameDelay = 75;
     static int HEIGHT = 432; //needs to be this because of the size of the size of OSX top of window
     static int WIDTH = PLAY_AREA_X + Frills.BOARDER_WIDTH;
     Color BODY_COLOR = Color.BLACK;
@@ -140,7 +140,7 @@ public class Snake implements World{
                 return;
             }
             else{
-                resetSpeed = Integer.parseInt(args[0]);
+                frameDelay = Integer.parseInt(args[0]);
             }
         }
 
@@ -149,7 +149,7 @@ public class Snake implements World{
 
         //BigBang
         Snake s = new Snake();
-        BigBang game = new BigBang(resetSpeed, s);
+        BigBang game = new BigBang(frameDelay, s);
         /* TODO: Need to figure out which order classes are instantiated in so as to figure out where variables
          * can be set. Such as the location of the frills and such
          */
