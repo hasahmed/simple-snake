@@ -34,11 +34,10 @@ public class Snake implements World{
     public Snake(){
         String os = System.getProperty("os.name");
         if (os.toLowerCase().contains("windows")) {
-            this.HEIGHT += 15;
+            this.HEIGHT += 17;
             //this.WIDTH += 15;
         }
     }
-
     int scoreWrittenToFile = WriteScore.getScoreFromFile();
 
     void reset(){
