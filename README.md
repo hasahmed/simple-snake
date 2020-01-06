@@ -20,3 +20,7 @@ The application can be packaged into a MacOS .app bundle. Using a *nix system yo
 For other systems you can copy the code from these scripts and run them in your command prompt without
 the shebang line.
 
+
+### Getting Started
+
+The main entry point to the application is the Snake.java. To begin understanding the application, start there.
