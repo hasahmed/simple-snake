@@ -31,6 +31,13 @@ public class Snake implements World{
     Circle head;
     Point saveSpeed;
 
+    public Snake(){
+        String os = System.getProperty("os.name");
+        if (os.toLowerCase().contains("windows")) {
+            this.HEIGHT += 17;
+            //this.WIDTH += 15;
+        }
+    }
     int scoreWrittenToFile = WriteScore.getScoreFromFile();
 
     void reset(){
