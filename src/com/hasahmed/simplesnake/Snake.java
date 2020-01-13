@@ -145,7 +145,7 @@ public class Snake implements World{
         }
 
         WriteScore.init();
-        System.setProperty("sun.java2d.opengl", "True");
+//        System.setProperty("sun.java2d.opengl", "True");
 
         //BigBang
         Snake s = new Snake();
