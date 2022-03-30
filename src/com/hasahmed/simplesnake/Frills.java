@@ -11,11 +11,12 @@ class Frills {
     static final int ARROW_Y = 35;
     static final int BOARDER_WIDTH = 10;
     static void drawBorder(Graphics g){
+
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, Snake.WIDTH, BOARDER_WIDTH);                            //top
         g.fillRect(0, Snake.PLAY_AREA_X, Snake.WIDTH, BOARDER_WIDTH);            //bottom
         g.fillRect(0, 0, BOARDER_WIDTH, Snake.HEIGHT);                           //left
-        g.fillRect(Snake.WIDTH - BOARDER_WIDTH, 0, BOARDER_WIDTH, Snake.HEIGHT); //right
+        g.fillRect((Snake.WIDTH - BOARDER_WIDTH) - Snake.windowsWidthAdjust, 0, BOARDER_WIDTH, Snake.HEIGHT); //right
     }
     static void drawStartScreen(Graphics g){
         //TITLE

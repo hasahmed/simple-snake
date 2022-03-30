@@ -10,6 +10,7 @@ public class Snake implements World{
     boolean displayStartScreen = true;
     static int PLAY_AREA_X = 400;
     static int PLAY_AREA_Y = 400;
+
 //    private static int preLoop = 10010; //loop the game a lot so that it will be faster?
     private static int preLoop = 1; //loop the game a lot so that it will be faster?
     private int STARTING_LENGTH = 5;
@@ -19,8 +20,11 @@ public class Snake implements World{
     int RADIUS = 5;
     int FOOD_GROWTH = 3;
     static Integer frameDelay = 75;
-    static int HEIGHT = 432; //needs to be this because of the size of the size of OSX top of window
+    static int HEIGHT = 432; //osx //needs to be this because of the size of the size of OSX top of window
+    // static int HEIGHT = 449; //windows //needs to be this because of the size of the size of OSX top of window
     static int WIDTH = PLAY_AREA_X + Frills.BOARDER_WIDTH;
+    static int windowsWidthAdjust = 0;
+    static int windowsHeightAdjust = 0;
     Color BODY_COLOR = Color.BLACK;
     Color FOOD_COLOR = Color.ORANGE;
     boolean drawMode = false;
@@ -34,8 +38,12 @@ public class Snake implements World{
     public Snake(){
         String os = System.getProperty("os.name");
         if (os.toLowerCase().contains("windows")) {
-            this.HEIGHT += 17;
-            //this.WIDTH += 15;
+
+            windowsHeightAdjust = 34;
+            windowsWidthAdjust = 22;
+
+            Snake.HEIGHT += windowsHeightAdjust;
+            Snake.WIDTH += windowsWidthAdjust;
         }
     }
     int scoreWrittenToFile = WriteScore.getScoreFromFile();
