@@ -119,17 +119,33 @@ public class KeyboardHandler {
     static void handleKeyPressed(KeyEvent e, Snake game) {
         if (!game.gameOver && KeyboardHandler.keyOpp < 2){
 
-            if (e.getKeyCode() == KeyEvent.VK_RIGHT){
+            if (
+			    e.getKeyCode() == KeyEvent.VK_RIGHT ||
+			    e.getKeyCode() == KeyEvent.VK_D ||
+			    e.getKeyCode() == KeyEvent.VK_L
+			    ){
                 right();
             }
-            else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            else if (
+			    e.getKeyCode() == KeyEvent.VK_LEFT ||
+			    e.getKeyCode() == KeyEvent.VK_A ||
+			    e.getKeyCode() == KeyEvent.VK_J
+			    ) {
                 left();
             }
 
-            else if (e.getKeyCode() == KeyEvent.VK_UP){
+            else if (
+			    e.getKeyCode() == KeyEvent.VK_UP ||
+			    e.getKeyCode() == KeyEvent.VK_W ||
+			    e.getKeyCode() == KeyEvent.VK_I
+			    ){
                 up();
             }
-            else if (e.getKeyCode() == KeyEvent.VK_DOWN){
+            else if (
+			    e.getKeyCode() == KeyEvent.VK_DOWN ||
+			    e.getKeyCode() == KeyEvent.VK_S ||
+			    e.getKeyCode() == KeyEvent.VK_K
+			    ){
                 down();
             }
             else if (e.getKeyCode() == KeyEvent.VK_P && !game.displayStartScreen){
