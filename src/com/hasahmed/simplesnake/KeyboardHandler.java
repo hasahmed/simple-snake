@@ -167,9 +167,19 @@ public class KeyboardHandler {
             game.closeWindow();
         }
 
-        if (       e.getKeyCode() == KeyEvent.VK_UP
-                || e.getKeyCode() == KeyEvent.VK_LEFT
-                || e.getKeyCode() == KeyEvent.VK_RIGHT){
+        if (
+		e.getKeyCode() == KeyEvent.VK_UP ||
+                e.getKeyCode() == KeyEvent.VK_LEFT ||
+                e.getKeyCode() == KeyEvent.VK_RIGHT ||
+
+		e.getKeyCode() == KeyEvent.VK_A ||
+                e.getKeyCode() == KeyEvent.VK_W ||
+                e.getKeyCode() == KeyEvent.VK_D ||
+
+		e.getKeyCode() == KeyEvent.VK_I ||
+                e.getKeyCode() == KeyEvent.VK_J ||
+                e.getKeyCode() == KeyEvent.VK_L
+		){
             game.displayStartScreen = false;
         }
     } // end keyPressed
