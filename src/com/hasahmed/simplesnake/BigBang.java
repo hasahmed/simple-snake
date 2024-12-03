@@ -47,11 +47,7 @@ class BigBang extends JComponent implements KeyListener, ActionListener, MouseLi
     }
     public void keyTyped(KeyEvent e) { }
     public void keyReleased(KeyEvent e) { }
-
-    public void mousePressed(MouseEvent e) {
-        world.mousePressed(e);
-        this.repaint();
-    }
+    public void mousePressed(MouseEvent e) { }
     public void mouseReleased(MouseEvent e) { }
     public void mouseClicked(MouseEvent e) { }
     public void mouseEntered(MouseEvent e) { }

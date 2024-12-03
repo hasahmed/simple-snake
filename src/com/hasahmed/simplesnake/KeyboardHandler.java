@@ -117,8 +117,11 @@ public class KeyboardHandler {
             dirlsRemoveFirst(); //execute
     }
     static void handleKeyPressed(KeyEvent e, Snake game) {
+        // TODO: setup seperate keypress configuration file,
+        // would support alternate key modes, e.g. vim style
+        // Would need to read a config from the environment,
+        // preferably JSON
         if (!game.gameOver && KeyboardHandler.keyOpp < 2){
-
             if (
 			    e.getKeyCode() == KeyEvent.VK_RIGHT ||
 			    e.getKeyCode() == KeyEvent.VK_D ||
@@ -158,13 +161,12 @@ public class KeyboardHandler {
                 game.closeWindow();
             }
         }
-
-        else if (e.getKeyCode() == KeyEvent.VK_R){
-            game.reset();
-        }
-
         else if (e.getKeyCode() == KeyEvent.VK_ESCAPE || e.getKeyCode() == KeyEvent.VK_Q){
             game.closeWindow();
+        }
+        else if (game.gameOver){
+            game.reset();
+            return;
         }
 
         if (

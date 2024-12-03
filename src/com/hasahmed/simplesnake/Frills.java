@@ -35,11 +35,9 @@ class Frills {
         String d = KeyboardHandler.saveSpeed;
         g.setFont(new Font("AndaleMono", Font.BOLD, 20));
         g.setColor(Color.GREEN);
-        if (d.equals("UP")){
-            g.drawString("\u2191", ARROW_X, ARROW_Y);
-        }
-        else if(d.equals("DOWN")) g.drawString("\u2193", ARROW_X, ARROW_Y);
-        else if(d.equals("LEFT")) g.drawString("\u2190", ARROW_X, ARROW_Y);
-        else g.drawString("\u2192", ARROW_X, ARROW_Y);
+        if (d.equals("UP"))         g.drawString("\u2191", ARROW_X, ARROW_Y);
+        else if(d.equals("DOWN"))   g.drawString("\u2193", ARROW_X, ARROW_Y);
+        else if(d.equals("LEFT"))   g.drawString("\u2190", ARROW_X, ARROW_Y);
+        else                                 g.drawString("\u2192", ARROW_X, ARROW_Y);
     }
 }
