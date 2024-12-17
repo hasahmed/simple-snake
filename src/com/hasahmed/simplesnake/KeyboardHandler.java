@@ -22,7 +22,6 @@ public class KeyboardHandler {
     static Dir[] dirls = new Dir[2];
     static String saveSpeed;
 
-
     /**
      * Finds the first non-null position of the list and inserts there
      * @param d The direction to be added to the list
@@ -165,8 +164,11 @@ public class KeyboardHandler {
             game.closeWindow();
         }
         else if (game.gameOver){
-            game.reset();
-            return;
+            if (game.gameOverDelayIsComplete) {
+                game.reset();
+                game.gameOverDelayIsComplete = false;
+                return;
+            }
         }
 
         if (

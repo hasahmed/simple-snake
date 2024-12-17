@@ -3,6 +3,8 @@ package com.hasahmed.simplesnake;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 
 public class Snake implements World{
@@ -29,6 +31,10 @@ public class Snake implements World{
     Color FOOD_COLOR = Color.ORANGE;
     boolean drawMode = false;
     boolean gameOver = false;
+    int gameOverDelayMs = 500;
+    boolean gameOverDelayIsComplete = false;
+    boolean delayedExecutorCalled = false;
+
     Score score = new Score();
     Body body = new Body(RADIUS, BODY_COLOR, STARTING_LENGTH);
     Food food = new Food(FOOD_COLOR, body);
@@ -47,44 +53,52 @@ public class Snake implements World{
         }
     }
     int scoreWrittenToFile = WriteScore.getScoreFromFile();
-
-    void reset(){
-        endCalled = false;
-        displayStartScreen = true;
-        KeyboardHandler.setDir(KeyboardHandler.Dir.STOP);
-        drawMode = false;
-        gameOver = false;
-        score = new Score();
-        body = new Body(RADIUS, BODY_COLOR, 5);
-        food = new Food(FOOD_COLOR, body);
-        scoreWrittenToFile = WriteScore.getScoreFromFile();
-    }
-
-    //update
-    public void update() {
-        KeyboardHandler.setDir(KeyboardHandler.dirls[0]);
-        KeyboardHandler.dirlsRemoveFirst();
-
-//variables
-        head = body.get(0);
-        KeyboardHandler.keyOpp = 0;
-        if (head.isOutOfBounds() || body.headOverlappingBody()){
-            body.redHead();
-            gameOver = true;
-            if (!endCalled) end();
+    
+        void reset(){
+            endCalled = false;
+            displayStartScreen = true;
+            KeyboardHandler.setDir(KeyboardHandler.Dir.STOP);
+            drawMode = false;
+            gameOver = false;
+            score = new Score();
+            body = new Body(RADIUS, BODY_COLOR, 5);
+            food = new Food(FOOD_COLOR, body);
+            scoreWrittenToFile = WriteScore.getScoreFromFile();
         }
-//updatePos
-        if (!paused && !gameOver && KeyboardHandler.getDir() != KeyboardHandler.Dir.STOP) body.updatePos();
-
-//drawMode
-        if(drawMode) this.body.addCircle();
-
-//foodCollision
-        if(food.isOverlappingHead(head)){
-            body.addCircle(FOOD_GROWTH);
-            food.moveToRandomPos();
-            score.addTo();
-            while(food.hittingBody()) food.moveToRandomPos();
+    
+        //update
+        public void update() {
+            KeyboardHandler.setDir(KeyboardHandler.dirls[0]);
+            KeyboardHandler.dirlsRemoveFirst();
+    
+    //variables
+            head = body.get(0);
+            KeyboardHandler.keyOpp = 0;
+            if (head.isOutOfBounds() || body.headOverlappingBody()){
+                body.redHead();
+                gameOver = true;
+                if (!endCalled) end();
+            }
+    //updatePos
+            if (!paused && !gameOver && KeyboardHandler.getDir() != KeyboardHandler.Dir.STOP) body.updatePos();
+    
+    //drawMode
+            if(drawMode) this.body.addCircle();
+    
+    //foodCollision
+            if(food.isOverlappingHead(head)){
+                body.addCircle(FOOD_GROWTH);
+                food.moveToRandomPos();
+                score.addTo();
+                while(food.hittingBody()) food.moveToRandomPos();
+            }
+    // Game Over condition
+            if (gameOver && !gameOverDelayIsComplete && !delayedExecutorCalled) {
+                delayedExecutorCalled = true;
+            CompletableFuture.delayedExecutor(gameOverDelayMs, TimeUnit.MILLISECONDS).execute(() -> {
+                gameOverDelayIsComplete = true;
+                delayedExecutorCalled = false;
+            });
         }
     } // end update
 
