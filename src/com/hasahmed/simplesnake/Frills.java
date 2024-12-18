@@ -10,6 +10,12 @@ class Frills {
     static final int ARROW_X = 25;
     static final int ARROW_Y = 35;
     static final int BOARDER_WIDTH = 10;
+
+    static final String UP_ARROW = "\u2191";
+    static final String DOWN_ARROW = "\u2193";
+    static final String LEFT_ARROW = "\u2190";
+    static final String RIGHT_ARROW = "\u2192";
+
     static void drawBorder(Graphics g){
 
         g.setColor(Color.BLACK);
@@ -35,9 +41,9 @@ class Frills {
         String d = KeyboardHandler.saveSpeed;
         g.setFont(new Font("AndaleMono", Font.BOLD, 20));
         g.setColor(Color.GREEN);
-        if (d.equals("UP"))         g.drawString("\u2191", ARROW_X, ARROW_Y);
-        else if(d.equals("DOWN"))   g.drawString("\u2193", ARROW_X, ARROW_Y);
-        else if(d.equals("LEFT"))   g.drawString("\u2190", ARROW_X, ARROW_Y);
-        else                                 g.drawString("\u2192", ARROW_X, ARROW_Y);
+        if (d.equals("UP"))         g.drawString(UP_ARROW, ARROW_X, ARROW_Y);
+        else if(d.equals("DOWN"))   g.drawString(DOWN_ARROW, ARROW_X, ARROW_Y);
+        else if(d.equals("LEFT"))   g.drawString(LEFT_ARROW, ARROW_X, ARROW_Y);
+        else                                 g.drawString(RIGHT_ARROW, ARROW_X, ARROW_Y);
     }
 }
