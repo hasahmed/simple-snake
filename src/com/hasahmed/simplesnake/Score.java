@@ -36,6 +36,9 @@ class Score{
 }
 class WriteScore{
     private static Point GAMEOVER_LOC = new Point(140, 200);
+
+    private static String RESTART_MSG = "Press any key to restart";
+    private static Point RESTART_LOC = new Point(138, 235);
     // TODO: implement a switch of save file location for other OS's
     private static String OS = System.getProperty("os.name").toLowerCase();
     private static String saveLoc = "/Users/" + System.getProperty("user.name").concat("/.shs");
@@ -72,9 +75,9 @@ class WriteScore{
             if (Integer.parseInt(score) > Integer.parseInt(currentScore)){
 
                 ///////text encryptor
-                PrintWriter printLn = new PrintWriter(scoreFile);
-                printLn.printf("%s" + "%n", textEncryptor.encrypt(score));
-                printLn.close();
+                PrintWriter printer = new PrintWriter(scoreFile);
+                printer.printf("%s" + "%n", textEncryptor.encrypt(score));
+                printer.close();
                 scannie.close();
                 newHighScore = true;
             }
@@ -120,7 +123,7 @@ class WriteScore{
             g.setColor(Color.WHITE);
             g.drawString("The old high score was ".concat(oldHighScore.toString()), 130, hsp.y + 15);
             g.drawString("The final snake length was ".concat(snakeLength.toString()), 120, hsp.y + 30);
-            g.drawString("Press R to restart", 148, 275);
+            g.drawString(RESTART_MSG, RESTART_LOC.x, RESTART_LOC.y);
             newHighScore = false;
         }
         catch(FileNotFoundException e){
@@ -140,7 +143,7 @@ class WriteScore{
                 g.setColor(Color.WHITE);
                 g.drawString("The old high score was ".concat(oldHighScore.toString()), 130, 215);
                 g.drawString("The final snake length was ".concat(snakeLength.toString()), 120, 260);
-                g.drawString("Press R to restart", 148, 275);
+                g.drawString(RESTART_MSG, RESTART_LOC.x, RESTART_LOC.y);
                 newHighScore = false;
             }
             catch(IOException f){
@@ -160,7 +163,7 @@ class WriteScore{
         g.drawString("Your score ".concat(currentGameScore.toString()), GAMEOVER_LOC.x + 22, GAMEOVER_LOC.y + 20);
         g.drawString("Current High Score ".concat(highScore.toString()), GAMEOVER_LOC.x - 10, GAMEOVER_LOC.y + 35);
         g.drawString("Final Snake Length ".concat(snakeLength.toString()), GAMEOVER_LOC.x -10, GAMEOVER_LOC.y + 50);
-        g.drawString("press R to restart", GAMEOVER_LOC.x, GAMEOVER_LOC.y + 85);
+        g.drawString(RESTART_MSG, RESTART_LOC.x, RESTART_LOC.y + 85);
         g.setColor(Color.RED);
         g.setFont(new Font("Courier New", Font.BOLD, 25));
         Graphics2D g2 = (Graphics2D)g;
