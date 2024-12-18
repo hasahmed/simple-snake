@@ -7,14 +7,14 @@ package com.hasahmed.simplesnake;
 import java.awt.*;
 
 class Frills {
-    static final int ARROW_X = 25;
-    static final int ARROW_Y = 35;
+    private static final int ARROW_X = 25;
+    private static final int ARROW_Y = 35;
     static final int BOARDER_WIDTH = 10;
 
-    static final String UP_ARROW = "\u2191";
-    static final String DOWN_ARROW = "\u2193";
-    static final String LEFT_ARROW = "\u2190";
-    static final String RIGHT_ARROW = "\u2192";
+    private static final String UP_ARROW = "\u2191";
+    private static final String DOWN_ARROW = "\u2193";
+    private static final String LEFT_ARROW = "\u2190";
+    private static final String RIGHT_ARROW = "\u2192";
 
     static void drawBorder(Graphics g){
 
