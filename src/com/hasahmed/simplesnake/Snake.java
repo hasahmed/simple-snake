@@ -22,7 +22,7 @@ public class Snake implements World{
     int RADIUS = 5;
     int FOOD_GROWTH = 3;
     static Integer frameDelay = 75;
-    static int HEIGHT = 432; //osx //needs to be this because of the size of the size of OSX top of window
+    static int HEIGHT = 438; //osx //needs to be this because of the size of the size of OSX top of window
     // static int HEIGHT = 449; //windows //needs to be this because of the size of the size of OSX top of window
     static int WIDTH = PLAY_AREA_X + Frills.BOARDER_WIDTH;
     static int windowsWidthAdjust = 0;
