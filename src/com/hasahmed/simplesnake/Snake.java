@@ -7,7 +7,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 
-public class Snake implements World{
+public class Snake implements World {
     private static String version = "2.0.1";
     boolean displayStartScreen = true;
     static int PLAY_AREA_X = 400;
