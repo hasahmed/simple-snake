@@ -190,11 +190,7 @@ public class Snake implements World {
         gameWindow.setSize(WIDTH, HEIGHT);
         gameWindow.center();
 
-        for (; preLoop >= 0; preLoop--){ //this is here so that java will make the code in init native...
-            // Is it actually faster? Who knows?
-            s.init();
-        }
-
+        s.init();
         game.begin();
     }
 
