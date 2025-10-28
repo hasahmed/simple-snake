@@ -192,6 +192,7 @@ public class Snake implements World {
 
         s.init();
         game.begin();
+
     }
 
 }
