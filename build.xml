@@ -44,6 +44,13 @@
         <delete dir="${out}"/>
         <delete dir="${dist}"/>
     </target>
+    <target name="run" depends="jar">
+    <java
+        jar="${dist}/jar/${ant.project.name}.jar"
+        fork="true"
+        >
+    </java>
+    </target>
 
 </project>
 
