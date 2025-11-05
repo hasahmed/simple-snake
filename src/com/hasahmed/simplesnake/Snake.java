@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class Snake implements World {
-    private static String version = "2.0.1";
+    private static final String version = "2.0.1";
     boolean displayStartScreen = true;
     static int PLAY_AREA_X = 400;
     static int PLAY_AREA_Y = 400;
@@ -28,7 +28,6 @@ public class Snake implements World {
     static int windowsHeightAdjust = 0;
     Color BODY_COLOR = Color.BLACK;
     Color FOOD_COLOR = Color.ORANGE;
-    boolean drawMode = false;
     boolean gameOver = false;
     int gameOverDelayMs = 500;
     boolean gameOverDelayIsComplete = false;
@@ -39,6 +38,7 @@ public class Snake implements World {
     Food food = new Food(FOOD_COLOR, body);
     Circle head;
     Point saveSpeed;
+    int scoreWrittenToFile = WriteScore.getScoreFromFile();
 
     public Snake(){
         String os = System.getProperty("os.name");
@@ -51,57 +51,54 @@ public class Snake implements World {
             Snake.WIDTH += windowsWidthAdjust;
         }
     }
-    int scoreWrittenToFile = WriteScore.getScoreFromFile();
-    
-        void reset(){
-            endCalled = false;
-            displayStartScreen = true;
-            KeyboardHandler.setDir(KeyboardHandler.Dir.STOP);
-            drawMode = false;
-            gameOver = false;
-            score = new Score();
-            body = new Body(RADIUS, BODY_COLOR, 5);
-            food = new Food(FOOD_COLOR, body);
-            scoreWrittenToFile = WriteScore.getScoreFromFile();
-        }
-    
-        //update
-        public void update() {
-            KeyboardHandler.setDir(KeyboardHandler.dirls[0]);
-            KeyboardHandler.dirlsRemoveFirst();
-    
-    //variables
-            head = body.get(0);
-            KeyboardHandler.keyOpp = 0;
-            if (head.isOutOfBounds() || body.headOverlappingBody()){
-                body.redHead();
-                gameOver = true;
-                if (!endCalled) end();
-            }
-    //updatePos
-            if (!paused && !gameOver && KeyboardHandler.getDir() != KeyboardHandler.Dir.STOP) body.updatePos();
-    
-    //drawMode
-            if(drawMode) this.body.addCircle();
-    
-    //foodCollision
-            if(food.isOverlappingHead(head)){
-                body.addCircle(FOOD_GROWTH);
-                food.moveToRandomPos();
-                score.addTo();
-                while(food.hittingBody()) food.moveToRandomPos();
-            }
-    // Game Over condition
-            if (gameOver && !gameOverDelayIsComplete && !delayedExecutorCalled) {
-                delayedExecutorCalled = true;
-            CompletableFuture.delayedExecutor(gameOverDelayMs, TimeUnit.MILLISECONDS).execute(() -> {
-                gameOverDelayIsComplete = true;
-                delayedExecutorCalled = false;
-            });
-        }
-    } // end update
 
-    //draw
+    /**
+     * Reset the game to default start screen
+     */
+    void reset(){
+        endCalled = false;
+        displayStartScreen = true;
+        KeyboardHandler.setDir(KeyboardHandler.Dir.STOP);
+        gameOver = false;
+        score = new Score();
+        body = new Body(RADIUS, BODY_COLOR, 5);
+        food = new Food(FOOD_COLOR, body);
+        scoreWrittenToFile = WriteScore.getScoreFromFile();
+    }
+    
+    //update
+    public void update() {
+        KeyboardHandler.setDir(KeyboardHandler.dirls[0]);
+        KeyboardHandler.dirlsRemoveFirst();
+
+        //variables
+        head = body.get(0);
+        KeyboardHandler.keyOpp = 0;
+        if (head.isOutOfBounds() || body.headOverlappingBody()){
+            body.redHead();
+            gameOver = true;
+            if (!endCalled) end();
+        }
+        //updatePos
+        if (!paused && !gameOver && KeyboardHandler.getDir() != KeyboardHandler.Dir.STOP) body.updatePos();
+
+        //foodCollision
+        if(food.isOverlappingHead(head)){
+            body.addCircle(FOOD_GROWTH);
+            food.moveToRandomPos();
+            score.addTo();
+            while(food.hittingBody()) food.moveToRandomPos();
+        }
+        // Game Over condition
+        if (gameOver && !gameOverDelayIsComplete && !delayedExecutorCalled) {
+            delayedExecutorCalled = true;
+        CompletableFuture.delayedExecutor(gameOverDelayMs, TimeUnit.MILLISECONDS).execute(() -> {
+            gameOverDelayIsComplete = true;
+            delayedExecutorCalled = false;
+        });
+    }
+} // end update
+
     public void draw(Graphics g){
         if (displayStartScreen){
             Frills.drawStartScreen(g);
@@ -125,8 +122,6 @@ public class Snake implements World {
 
     public void mousePressed(MouseEvent e) {}
 
-
-
     void pause(){
         if (!paused){
             body.redHead();
@@ -142,7 +137,6 @@ public class Snake implements World {
         }
     }
 
-
     void closeWindow(){
         gameWindow.closeWindow();
     }
@@ -155,6 +149,7 @@ public class Snake implements World {
         endCalled = true;
         WriteScore.writeToFile(score.getScore().toString());
     }
+
     void init(){
         update();
         body.headOverlappingBody();
@@ -162,6 +157,8 @@ public class Snake implements World {
     }
 
     public static void main(String[] args) throws IOException {
+        // OpenGL as renderer
+        System.setProperty("sun.java2d.opengl", "True");
         if(args.length > 0) {
             if(args[0].compareTo("--version") == 0){
                 System.out.println(version);
@@ -173,7 +170,6 @@ public class Snake implements World {
         }
 
         WriteScore.init();
-//        System.setProperty("sun.java2d.opengl", "True");
 
         //BigBang
         Snake s = new Snake();
@@ -185,7 +181,7 @@ public class Snake implements World {
         // gameWindow
         gameWindow = new GameWindow("Simple Snake");
         gameWindow.addGame(game);
-        gameWindow.setColor(Color.GRAY);
+        gameWindow.setBackgroundColor(Color.GRAY);
         gameWindow.setSize(WIDTH, HEIGHT);
         gameWindow.center();
 

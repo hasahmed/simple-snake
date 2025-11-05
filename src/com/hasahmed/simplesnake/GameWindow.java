@@ -27,7 +27,7 @@ public class GameWindow extends JFrame{
         game.addMouseListener(game);
     }
 
-    void setColor(Color color){
+    void setBackgroundColor(Color color){
         this.getContentPane().setBackground(color);
     }
 
