@@ -173,6 +173,10 @@ public class Snake implements World {
 
         //BigBang
         Snake s = new Snake();
+        KeyboardHandler.addKeyMode(new KeyModeWASD());
+        KeyboardHandler.addKeyMode(new KeyModeIJKL());
+//        KeyboardHandler.addKeyMode(new KeyModeVim());
+        KeyboardHandler.addKeyMode(new KeyModeArrows());
         BigBang game = new BigBang(frameDelay, s);
         /* TODO: Need to figure out which order classes are instantiated in so as to figure out where variables
          * can be set. Such as the location of the frills and such

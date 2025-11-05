@@ -39,6 +39,16 @@ public class KeyboardHandler {
     static void addKeyMode(KeyMode km){
         keyModes.add(km);
     }
+
+    /**
+     * @param e
+     * @return true if any directional key is pressed, so we know the game has started
+     * and can remove start screen stuff
+     */
+    static boolean checkAnyDirkeyPressed(KeyEvent e){
+        return keyModes.stream().anyMatch(
+                km -> km.testLeft(e) || km.testRight(e) || km.testUp(e) || km.testDown(e));
+    }
     static void clearKeyModes(){
         keyModes.clear();
     }
@@ -129,35 +139,19 @@ public class KeyboardHandler {
         // Would need to read a config from the environment,
         // preferably JSON
         if (!game.gameOver && KeyboardHandler.keyOpp < 2){
-            if (
-			    e.getKeyCode() == KeyEvent.VK_RIGHT ||
-			    e.getKeyCode() == KeyEvent.VK_D ||
-			    e.getKeyCode() == KeyEvent.VK_L
-			    ){
+            if (keyModes.stream().anyMatch(km -> km.testRight(e))){
                 right();
             }
-            else if (
-			    e.getKeyCode() == KeyEvent.VK_LEFT ||
-			    e.getKeyCode() == KeyEvent.VK_A ||
-			    e.getKeyCode() == KeyEvent.VK_J
-			    ) {
+            else if (keyModes.stream().anyMatch(km -> km.testLeft(e))) {
                 left();
             }
-
-            else if (
-			    e.getKeyCode() == KeyEvent.VK_UP ||
-			    e.getKeyCode() == KeyEvent.VK_W ||
-			    e.getKeyCode() == KeyEvent.VK_I
-			    ){
+            else if (keyModes.stream().anyMatch(km -> km.testUp(e))) {
                 up();
             }
-            else if (
-			    e.getKeyCode() == KeyEvent.VK_DOWN ||
-			    e.getKeyCode() == KeyEvent.VK_S ||
-			    e.getKeyCode() == KeyEvent.VK_K
-			    ){
+            else if (keyModes.stream().anyMatch(km -> km.testDown(e))) {
                 down();
             }
+
             else if (e.getKeyCode() == KeyEvent.VK_P && !game.displayStartScreen){
                 game.pause();
             }
@@ -179,19 +173,7 @@ public class KeyboardHandler {
             }
         }
 
-        if (
-		e.getKeyCode() == KeyEvent.VK_UP ||
-                e.getKeyCode() == KeyEvent.VK_LEFT ||
-                e.getKeyCode() == KeyEvent.VK_RIGHT ||
-
-		e.getKeyCode() == KeyEvent.VK_A ||
-                e.getKeyCode() == KeyEvent.VK_W ||
-                e.getKeyCode() == KeyEvent.VK_D ||
-
-		e.getKeyCode() == KeyEvent.VK_I ||
-                e.getKeyCode() == KeyEvent.VK_J ||
-                e.getKeyCode() == KeyEvent.VK_L
-		){
+        if (checkAnyDirkeyPressed(e)){
             game.displayStartScreen = false;
         }
     } // end keyPressed
