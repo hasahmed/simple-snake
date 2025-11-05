@@ -4,8 +4,7 @@ import java.awt.*;
 import java.util.Random;
 
 class Circle {
-//instace variables
-  int keyOpp = 0;
+//instance variables
   Point pos = new Point(0, 0);
   Point speed = new Point(0, -10);
   Point lastPos = new Point(0, 0);
@@ -30,7 +29,7 @@ class Circle {
       int x = this.pos.x;
       int y = this.pos.y;
 
-      if (x > Snake.PLAY_AREA_X - 5 || x < 0 + 10 || y > Snake.PLAY_AREA_Y - 5 || y <= 0 + 5) return true;
+      if (x > Snake.PLAY_AREA_X - 5 || x < 10 || y > Snake.PLAY_AREA_Y - 5 || y <= 5) return true;
       return false;
   }
   int getX(){
@@ -65,7 +64,7 @@ class Body extends ArrayList<Circle>{
 
     /**
      * fills this (the Body) with a number of circles, and sets their locations such that they correctly stack vertically
-     * Used at the begining of the game and that is all
+     * Used at the beginning of the game and that is all
      * @param numOfCircles the number of circles to fill the body with
      */
     void fillWithCircles(int numOfCircles) {

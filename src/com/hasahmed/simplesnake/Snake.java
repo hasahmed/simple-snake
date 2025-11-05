@@ -14,8 +14,7 @@ public class Snake implements World {
     static int PLAY_AREA_Y = 400;
 
 //    private static int preLoop = 10010; //loop the game a lot so that it will be faster?
-    private static int preLoop = 1; //loop the game a lot so that it will be faster?
-    private int STARTING_LENGTH = 5;
+    private final int STARTING_LENGTH = 5;
     private static GameWindow gameWindow;
     private boolean paused = false;
     boolean endCalled = false; // keep end() from being called every tic
