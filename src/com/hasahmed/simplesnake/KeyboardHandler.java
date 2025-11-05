@@ -11,8 +11,10 @@ package com.hasahmed.simplesnake;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class KeyboardHandler {
+    private static ArrayList<KeyMode> keyModes = new ArrayList<KeyMode>();
     static Point speed = new Point(0, 0);
     static int keyOpp = 0;
     /**
@@ -33,6 +35,12 @@ public class KeyboardHandler {
                 break;
             }
         }
+    }
+    static void addKeyMode(KeyMode km){
+        keyModes.add(km);
+    }
+    static void clearKeyModes(){
+        keyModes.clear();
     }
     /**
      * removes the 0th element of the dirls Array, and moves the 1st element to its place, replacing the 1st
