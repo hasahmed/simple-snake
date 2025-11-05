@@ -35,7 +35,7 @@ public class KeyboardHandler {
         }
     }
     /**
-     * removes the 0th element of the dirls Array, and moves the 1th element to its place, replacing the 1th
+     * removes the 0th element of the dirls Array, and moves the 1st element to its place, replacing the 1st
      * element with null
      */
     static void dirlsRemoveFirst(){
