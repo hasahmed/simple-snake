@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class GameWindow extends JFrame{
+public class GameWindow extends JFrame {
     Dimension screenDimensions = Toolkit.getDefaultToolkit().getScreenSize();
 
 
