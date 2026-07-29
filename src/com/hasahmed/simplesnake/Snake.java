@@ -141,6 +141,10 @@ public class Snake implements World {
         gameWindow.closeWindow();
     }
 
+    void toggleTranslucent(){
+        gameWindow.toggleTranslucent();
+    }
+
     public void keyPressed(KeyEvent e){
         KeyboardHandler.handleKeyPressed(e, this);
     }
@@ -186,6 +190,7 @@ public class Snake implements World {
         gameWindow = new GameWindow("Simple Snake");
         gameWindow.addGame(game);
         gameWindow.setBackgroundColor(Color.GRAY);
+        // gameWindow.setBackgroundColor( new Color(128, 128, 128, 128));
         gameWindow.setSize(WIDTH, HEIGHT);
         gameWindow.center();
 

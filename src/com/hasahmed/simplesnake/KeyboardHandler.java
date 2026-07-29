@@ -173,6 +173,10 @@ public class KeyboardHandler {
             }
         }
 
+        if (e.getKeyCode() == KeyEvent.VK_1){
+            game.toggleTranslucent();
+        }
+
         if (checkAnyDirkeyPressed(e)){
             game.displayStartScreen = false;
         }
