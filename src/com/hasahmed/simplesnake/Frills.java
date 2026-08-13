@@ -33,9 +33,10 @@ class Frills {
         g2.drawString("SIMPLE SNAKE", 58, 60);
         //INSTRUCTIONS
         g.setFont(new Font("AndaleMono", Font.BOLD, 12));
-        g.drawString("Press LEFT, RIGHT or UP Arrow Key to start", 60, 350);
+        g.drawString("Arrow keys, WASD, or IJKL to start", 90, 350);
         g.drawString("ESC to quit", 175, 365);
         g.drawString("P to pause", 175, 380);
+        g.drawString("1 to toggle transparency", 130, 395);
     }
     static void drawPauseGraphics(Graphics g){
         String d = KeyboardHandler.saveSpeed;
